@@ -1,0 +1,135 @@
+
+$image-size: 20rem;
+
+.container{
+    height: 100vh;
+
+    .main-header{
+        margin-bottom: 0.2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+        font-size: 2rem;
+        font-weight: lighter;
+    }
+    
+    
+    .divide-section{
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        overflow: hidden;
+    
+        .side-bar{
+            overflow-y: auto;
+            height: 100%;
+            margin: 1rem;
+            padding: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+    
+    
+            ul{
+                text-decoration: none;
+                list-style: none;
+
+                li{
+
+                    text-decoration: none;
+
+                    p{
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    
+    
+        .main-gallery{
+            margin: 1rem;
+            padding: rem;
+            overflow-y: auto;
+            height: 100%;
+    
+
+            .photos-section{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                // input code for image carousal
+                .image-carousal{    
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+        
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+    
+                    button{
+                        border: none;
+                        font-size: 3rem;
+                        cursor: pointer;
+                    }
+                
+                    &__left-button{
+                        width: 5rem;
+                    }
+                
+                    &__img-gallary{
+                        width: $image-size;
+                        height: $image-size;
+                        display: block;
+                        // height: 60vh;
+                        overflow: hidden;
+                        
+                        
+                        &__img-container{
+                            
+                            width: $image-size;
+                            height: $image-size;
+                            // display: block;
+                            display: flex;
+                            flex-direction: row;
+        
+                            .image-carousal__img-gallary__img-el{
+                    
+                                width: $image-size;
+                                height: $image-size;
+                    
+                    
+                                img{
+                                    object-fit: cover;
+                                    object-position: center;
+                                    width: $image-size;
+                                    height: $image-size;
+                                }
+                            }
+                
+                            transform: translateX(0);
+                            transition: transform 0.5s ease-in-out;
+                        }
+                    }
+                    &__right-button{
+                        width: 5rem;
+                    }
+                }
+
+                // Flex display for centering the contents
+                .description-section{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    p{
+                        margin-top: 1rem;
+                    }
+                }
+
+            }
+        }
+    }
+
+}

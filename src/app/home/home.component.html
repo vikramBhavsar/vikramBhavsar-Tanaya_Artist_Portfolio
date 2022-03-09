@@ -1,0 +1,21 @@
+
+<main>
+    <!-- <h1>Tanaya</h1> -->
+  
+    <div>
+      <img (click)="nameClick()" [ngClass]="{'active':clicked}" src="assets/Images/name_small.png" alt="" #myName>
+  
+      <div [ngClass]="clicked ? 'tabs tabs-active' : 'tabs'">
+      <!-- <div Class="tabs tabs-active"> -->
+        <ul>
+          <!-- <li><h3 class="special">Tanaya</h3></li> -->
+          <li><img (click)="nameClick()" [ngClass]="{'special':clicked}" src="assets/Images/name_small.png" alt="" #myName></li>
+          <li><a href="">About</a></li>
+          <li><a routerLink="/gallery">Gallery</a></li>
+          <li><a href="">Art Education</a></li>
+          <li><a href="">Projects/Rants</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>

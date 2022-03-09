@@ -5,5 +5,11 @@ $primary-color: #F8EFE6;
     padding: 0rem;
     margin: 0rem;
     background-color: $primary-color;
-    font-family: 'Dancing Script', cursive;
+
+
+    // uncomment below font family for cursive
+    // font-family: 'Dancing Script', cursive;
+
+    // default font
+    font-family: 'Oswald', sans-serif;
 }

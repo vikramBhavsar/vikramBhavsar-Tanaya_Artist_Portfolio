@@ -8,12 +8,4 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class AppComponent {
   title = 'Tanaya_Artist_portfolio';
 
-  clicked:boolean = false;
-  @ViewChild("myName") myNameImg !: ElementRef;
-
-
-
-  nameClick(){
-    this.clicked = !this.clicked;
-  }
 }
