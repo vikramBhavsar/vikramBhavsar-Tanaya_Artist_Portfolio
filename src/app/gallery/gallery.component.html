@@ -1,91 +1,247 @@
 
+
 <div class="container">
     
-    <div class="main-header">
-        <h1>TANAYA</h1>
+
+    <!-- Image Modal to view enlarged Image. -->
+    <div class="opened-img" #imgModal>
+
+        <div class="btn-div">
+            <button (click)="closeModalImage()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="img-container">
+            <img src="{{curImgLink}}" alt="">
+            <p>{{curImgStatus}}</p>
+        </div>
     </div>
 
-    <div class="divide-section">
-        <div class="side-bar">
+
+    <div class="main-header">
+        <a routerLink="/home"><h1>TANAYA</h1></a> 
+    </div>
+
+    <div class="phone-menu">
+        <button (click)="TogglePhoneMenu()" class="phone-menu-btn">
+            <div *ngIf="hamburger; then barsBlock else crossBlock"></div>
+            <ng-template #crossBlock><i class="fa-solid fa-bars"></i></ng-template>
+            <ng-template #barsBlock><i class="fa-solid fa-xmark"></i></ng-template>
+        </button>
+    </div>
+
+    <div class="phone-side-bar" #phone_side_menu>
+        <div class="side-bar-menu">
             <ul>
                 <li>
-                    <p>Bottom</p>
-                    <p>My insole foot</p>
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <p>Lorem ipsum dolor sit amet</p>
-    
-        
+                    <a routerLink="/home">Home</a>
+                </li>
+
+                <li>
+                    <a routerLink="/about">About</a>
+                </li>
+                <li>
+                    <h3>Gallery</h3>
+
+                    <ul>
+                        <li>
+                            <a href="/proj-1" class="active">Project 1</a>
+                        </li>
+                        <li>
+                            <a href="/proj-2">Project 2</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a routerLink="/art-education">Art Education</a>
+                </li>
+
+                <li>
+                    <a routerLink="/project-rants">Project/Rants</a>
+                </li>
+
+                <li>
+                    <a routerLink="/contact">Contact</a>
                 </li>
             </ul>
         </div>
-        
-        
-        <div class="main-gallery">
-        
-        <H1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus natus harum, dignissimos corporis nam dolorem nihil eum a officia quasi. Rerum eligendi illo animi. Doloremque, ipsam amet! Vitae, officia culpa!</H1>
-        
-        <P>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis incidunt delectus perspiciatis veritatis repellendus quaerat aut eveniet fugit nihil nemo, obcaecati, ex ratione cum ut? Ullam doloremque eaque harum eveniet labore nulla tenetur sed est! Accusantium quibusdam optio aut eaque id sed, temporibus eius laboriosam! Perferendis, possimus? Quaerat quas itaque id deleniti debitis possimus accusantium, quae enim neque at ab! Ipsam tenetur iure soluta tempora dolore, aspernatur, molestiae voluptatum necessitatibus, deserunt iste corrupti fugiat cumque? Illo, est. Labore sed incidunt laudantium tempora nesciunt unde velit saepe repellendus molestias corporis, maiores facere, omnis illo! Nulla quis impedit similique quia dicta ex!</P>
-            
-    
-        <div class="photos-section">
-            <div class="img-gallery">
-        
-        
-                <!-- EXPERIMENTAL CODE FOR IMAGE CAROUSAL -->
-                <div class="image-carousal">
-                    <button (click)="prev()" class="image-carousal__left-button">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-            
-                    <div class="image-carousal__img-gallary">
-            
-                        <div id="img-carousel" class="image-carousal__img-gallary__img-container" #img_carousel>
-            
-                            <div class="image-carousal__img-gallary__img-el">
-                                <img src="https://cdn.pixabay.com/photo/2020/07/08/08/07/daisy-5383056_960_720.jpg" alt="">
-                            </div>
-                
-                            <div class="image-carousal__img-gallary__img-el">
-                                <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFpc3l8ZW58MHx8MHx8&w=1000&q=80" alt="">
-                            </div>
-                
-                            <div class="image-carousal__img-gallary__img-el">
-                                <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__480.jpg" alt="">
-                            </div>
-                
-                            <div class="image-carousal__img-gallary__img-el">
-                                <img src="https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg" alt="">
-                            </div>
-            
-                        </div>
-            
-            
-                    </div>
-                    
-            
-                    <button (click)="next()" class="image-carousal__right-button">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-                <!-- EXPERIMENTAL CODE FOR IMAGE CAROUSAL ABOVE -->
-        
-        
-        
-            </div>
-
-            <div class="description-section">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi inventore obcaecati modi consectetur vel alias amet quibusdam optio ad nobis!</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed corporis dolore praesentium alias quae exercitationem repellat et veniam a asperiores corrupti incidunt culpa dolor odit veritatis recusandae, deserunt tenetur labore officiis esse aspernatur assumenda? Nobis autem aspernatur fugiat corporis quo libero quae, sunt cupiditate repellendus minima doloribus quod facere necessitatibus!</p>
-            </div>
-
-        </div>
-        
-        
-        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laborum exercitationem quasi quae cupiditate, vel ad odit saepe repudiandae numquam consequuntur possimus non perferendis dignissimos asperiores? Ipsum reiciendis magni eum laboriosam nostrum, nihil eos porro dolorum rem inventore, recusandae quasi voluptate. Facilis voluptates excepturi totam vel autem incidunt nisi repellendus quidem nobis asperiores cupiditate molestias delectus consequatur tenetur ab, reiciendis enim! Unde dolorum eos excepturi sed saepe culpa hic dicta quas quibusdam? Eveniet, rem hic nihil quas incidunt et obcaecati harum labore earum dolores vitae voluptates ducimus eius accusantium tenetur! Obcaecati magnam accusantium repellendus mollitia nulla vitae? Eaque atque ratione minus iste corporis, culpa rerum, aliquid perferendis quia quo beatae. Hic perferendis consequuntur quia saepe recusandae omnis tenetur voluptates officia rem ullam delectus doloremque, ex aperiam, maiores excepturi culpa fuga quam. Veniam quasi laborum facere reiciendis ad non labore adipisci alias odit. Accusantium temporibus similique beatae sapiente maxime eius cumque vel sed quidem, magnam nulla, dolores voluptates dolore aliquid modi ullam ex blanditiis sit est porro doloribus consequuntur optio et? Reprehenderit, dignissimos sit voluptates vel dolore dolorem ipsa nemo voluptatem et? Voluptatem odit, architecto consequuntur nulla dolores aliquam libero consequatur culpa eaque beatae vel pariatur saepe aperiam, rerum maiores provident.</P>
-    
-        </div>
     </div>
 
 
+    
+    
+    <div class="divide-section">
+
+        <div class="side-bar">
+            <ul>
+                <li>
+                    <a routerLink="/home">Home</a>
+                </li>
+
+                <li>
+                    <a routerLink="/about">About</a>
+                </li>
+                <li>
+                    <h3>Gallery</h3>
+
+                    <ul>
+                        <li>
+                            <a href="/proj-1" class="active">Project 1</a>
+                        </li>
+                        <li>
+                            <a href="/proj-2">Project 2</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a routerLink="/art-education">Art Education</a>
+                </li>
+
+                <li>
+                    <a routerLink="/project-rants">Project/Rants</a>
+                </li>
+
+                <li>
+                    <a routerLink="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- This div wil contain all the gallery section -->
+        <div class="gallery-container">
+            <!-- template project section for single photos and description -->
+            <div class="project-section-single-photo">
+                <h2>SECTION Name</h2>
+                <div class="description-divide">
+        
+                    <div class="img-overlay">
+                        <img src="../../assets/Images/Fragments/IMG_2219.JPG" (click)="openImage('../../assets/Images/Fragments/IMG_2219.JPG','Memorabilia | Found objects (locks, keys, pistachio shells, groundnut shells, bubble wrap, sea shells, cement) and mixed media on discarded paper | 25 x 26.5 inches | 2017 ')" alt="">
+                        <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
+                        <div class="img-description-short">
+                            <small>Memorabilia | Found objects (locks, keys, pistachio shells, groundnut shells, bubble wrap, sea shells, cement) and mixed media on discarded paper | 25 x 26.5 inches | 2017 </small>
+                        </div>
+                    </div>
+        
+                    <div class="img-description-long">
+                        <p>Memorabilia contains the little objects and materials that I used to enjoy collecting as a child. The cement pieces capture the associated memories in my mind, while the discarded bits of paper portray the images of my faint memory. The work created was a way through which I could date back my obsessions that I currently have: collecting discards and finding possibilities of using them through my art. </p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <!-- Template project section for multiple photos and single description (CAROUSAL) -->
+            <div class="project-section-multiple-photos">
+                <h2>Project Name 2</h2>
+                <div class="description-divide">
+        
+                    <div class="img-overlay">
+
+                        <!-- Here the image gallery would appear -->
+                        <div class="image-carousal" >
+                            <div class="image-carousal__img-gallary" #img_gallery>
+                                <div id="img-carousel" class="image-carousal__img-gallary__img-container" #img_carousel>
+                    
+                                    <div class="image-carousal__img-gallary__img-el">
+                                        <img src="https://cdn.pixabay.com/photo/2020/07/08/08/07/daisy-5383056_960_720.jpg" alt="" #one_image>
+                                    </div>
+                        
+                                    <div class="image-carousal__img-gallary__img-el">
+                                        <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFpc3l8ZW58MHx8MHx8&w=1000&q=80" alt="" >
+                                    </div>
+                        
+                                    <div class="image-carousal__img-gallary__img-el">
+                                        <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__480.jpg" alt="" >
+                                    </div>
+                        
+                                    <div class="image-carousal__img-gallary__img-el">
+                                        <img src="https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg" alt="" >
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="buttons">
+                                <button (click)="prev()" class="image-carousal__left-button">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                
+                        
+                                <button (click)="next()" class="image-carousal__right-button">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="img-description-short">
+                            <small>Memorabilia | Found objects (locks, keys, pistachio shells, groundnut shells, bubble wrap, sea shells, cement) and mixed media on discarded paper | 25 x 26.5 inches | 2017 </small>
+                        </div>
+                    </div>
+        
+                    <div class="img-description-long">
+                        <p>Memorabilia contains the little objects and materials that I used to enjoy collecting as a child. The cement pieces capture the associated memories in my mind, while the discarded bits of paper portray the images of my faint memory. The work created was a way through which I could date back my obsessions that I currently have: collecting discards and finding possibilities of using them through my art. </p>
+                    </div>
+                </div>
+            </div>
+            <!-- End of section -->
+
+
+            <!-- Template project section for multiple photos (with or without description) -->
+            <div class="project-section-multiple-photos-layed">
+                <h2>Fragment series</h2>
+
+                <div class="section-contents">
+
+                    <div class="description-section">
+                        <p>This series of paintings were made during the first lockdown in 2020. Restricted to stay indoors, these works marked the physical urge and immediate impulse to act on the leftover oil paint from my father’s palette, an act unlike any made by me in the past. (Or atleast I felt so in that moment) This paint was then translated as landscapes or in other words mindscapes on old and used pieces of canvas from my college days, a mundane material for any artist, found while doing household chores. 
+                            The paintings are intuitive fragments of memory, the self probably yearning for a utopian world, outside of Covid, its uncertainty and its reality. They symbolise hope, a sense of respite and relief in the mind’s eye. The works attempt at creating an aesthetic, a feeling of beauty from the purposeless, in order to create meaning and purpose. 
+                            </p>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment I.jpg" (click)="openImage('../../assets/Images/Fragments/Fragment I.jpg','Fragment I | Wasted oil paint on old, used canvas | 5.75 x 6.5 inches | 2020')" alt="">
+                        <small>Fragment I | Wasted oil paint on old, used canvas | 5.75 x 6.5 inches | 2020 </small>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment II.JPG" (click)="openImage('../../assets/Images/Fragments/Fragment II.JPG','Fragment II | Wasted oil paint on old, used canvas | 4.5 x 7 inches | 2020')" alt="">
+                        <small>Fragment II | Wasted oil paint on old, used canvas | 4.5 x 7 inches | 2020</small>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment III.JPG" (click)="openImage('../../assets/Images/Fragments/Fragment III.JPG','Fragment III | Wasted oil paint on old, used canvas | 3 x 4 inches | 2020')" alt="">
+                        <small>Fragment III | Wasted oil paint on old, used canvas | 3 x 4 inches | 2020</small>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment IV.JPG" alt="">
+                        <small>Fragment IV | Wasted oil paint on old, used canvas | 2.2 x 4.8 inches | 2020</small>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment V.JPG" alt="">
+                        <small>Fragment V | Wasted oil paint on old, used canvas | 4.5 x 5.4 inches | 2020</small>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment VI.JPG" alt="">
+                        <small>Fragment VI | Wasted oil paint on old, used canvas | 4.2 x 6 inches | 2020</small>
+                    </div>
+
+                    <div class="image-section">
+                        <img src="../../assets/Images/Fragments/Fragment VII.JPG" alt="">
+                        <small>Fragment VII | Wasted oil paint on old, used canvas | 5 x 7 inches | 2020</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
     
 </div>

@@ -28,6 +28,7 @@ main {
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 
   div {
     background: transparent;
@@ -72,7 +73,7 @@ main {
         flex-direction: row;
         justify-content: space-between;
         width: 80vw;
-        font-size: 3rem;
+        font-size: 2rem;
         color: $primary-color;
         background: transparent;
 
@@ -155,11 +156,41 @@ main {
 
 // For mobile Landscape
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  //CSS Code
+  main {
+
+    div {
+
+      img{
+        width: 30rem;
+      }
+
+      .active {
+        transform: translateX(8rem);
+        width: 15rem;
+      }
+
+      .tabs {
+        ul {
+          flex-direction: column;
+          li {
+            &:hover {
+              color: white;
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      .tabs-active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
 }
 
 // for typical mobile devices
-@media only screen and (min-width: 320px) and (max-width: 479px) {
+@media only screen and (max-width: 479px) {
     main {
         position: relative;
         background-image: url("../../assets/Images/bg_3.png");

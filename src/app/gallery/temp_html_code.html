@@ -1,0 +1,153 @@
+<div class="container">
+  <div class="main-header">
+    <h1>TANAYA</h1>
+  </div>
+
+  <div class="phone-menu">
+    <button (click)="TogglePhoneMenu()" class="phone-menu-btn">
+      <div *ngIf="hamburger; then barsBlock else crossBlock"></div>
+      <ng-template #crossBlock><i class="fa-solid fa-bars"></i></ng-template>
+      <ng-template #barsBlock><i class="fa-solid fa-xmark"></i></ng-template>
+    </button>
+  </div>
+
+  <div class="phone-side-bar" #phone_side_menu>
+    <div class="side-bar-menu">
+      <ul>
+        <li>
+          <p>Bottom</p>
+        </li>
+
+        <li>
+          <p>My insole foot</p>
+        </li>
+        <li>
+          <p>Lorem ipsum dolor sit amet</p>
+        </li>
+
+        <li>
+          <p>Lorem ipsum dolor sit amet</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- template project section for single photos and description -->
+  <div class="project-section-single-photo">
+    <h1>Project Name</h1>
+    <div class="description-divide">
+      <div class="img-overlay">
+        <img src="../../assets/Images/Fragments/IMG_2219.JPG" alt="" />
+        <div class="img-description-short">
+          <p>
+            Memorabilia | Found objects (locks, keys, pistachio shells,
+            groundnut shells, bubble wrap, sea shells, cement) and mixed media
+            on discarded paper | 25 x 26.5 inches | 2017
+          </p>
+        </div>
+      </div>
+
+      <div class="img-description-long">
+        <p>
+          Memorabilia contains the little objects and materials that I used to
+          enjoy collecting as a child. The cement pieces capture the associated
+          memories in my mind, while the discarded bits of paper portray the
+          images of my faint memory. The work created was a way through which I
+          could date back my obsessions that I currently have: collecting
+          discards and finding possibilities of using them through my art.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divide-section">
+    <div class="side-bar">
+      <ul>
+        <li>
+          <p>Bottom</p>
+        </li>
+
+        <li>
+          <p>My insole foot</p>
+        </li>
+        <li>
+          <p>Lorem ipsum dolor sit amet</p>
+        </li>
+
+        <li>
+          <p>Lorem ipsum dolor sit amet</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main-gallery">
+      <h1>Accidental series</h1>
+
+      <div class="photos-section">
+        <div class="img-gallery">
+          <!-- EXPERIMENTAL CODE FOR IMAGE CAROUSAL -->
+          <div class="image-carousal">
+            <div class="image-carousal__img-gallary" #img_gallery>
+              <div
+                id="img-carousel"
+                class="image-carousal__img-gallary__img-container"
+                #img_carousel
+              >
+                <div class="image-carousal__img-gallary__img-el">
+                  <!-- <img src="https://cdn.pixabay.com/photo/2020/07/08/08/07/daisy-5383056_960_720.jpg" alt=""> -->
+
+                  <img
+                    src="../../assets/Images/Fragments/IMG_2219.JPG"
+                    alt=""
+                  />
+                </div>
+
+                 <div class="image-carousal__img-gallary__img-el">
+                    <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFpc3l8ZW58MHx8MHx8&w=1000&q=80" alt="">
+
+                    <img src="../../assets/Images/Fragments/Accidental II.JPG" alt="">
+                </div> 
+
+                <div class="image-carousal__img-gallary__img-el">
+                    <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__480.jpg" alt="">
+
+                    <img src="../../assets/Images/4 (2).jpg" alt="">
+                </div>
+    
+                <div class="image-carousal__img-gallary__img-el">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg" alt="">
+                    <img src="../../assets/Images/5 (2).jpg" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="buttons">
+                <button (click)="prev()" class="image-carousal__left-button">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                
+        
+                <button (click)="next()" class="image-carousal__right-button">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+          </div>
+          <!-- EXPERIMENTAL CODE FOR IMAGE CAROUSAL ABOVE -->
+        </div>
+
+        <div class="description-section">
+          <p>
+            These two paintings: Accidental I and II, are quick works on paper
+            which were intuitively made when I couldn’t create the painting that
+            I actually wanted to: a painted piece of wall that broke off, from
+            my own house. After several attempts at salvaging my painting, it
+            seemed like the piece could not embody anything else, and preferred
+            to remain as it is! Impulsively, I used the paint to create these
+            sketches instead. The broken fragment is a part of the Memory Garden
+            now.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
