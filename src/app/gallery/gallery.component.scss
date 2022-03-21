@@ -309,6 +309,9 @@ $secondary-color: #fec5bb;
             }
 
             .img-description-short {
+              width: 100%;
+              display: flex;
+              justify-content: center;
               small {
                 font-size: 0.8rem;
               }

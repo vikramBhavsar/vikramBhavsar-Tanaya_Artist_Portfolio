@@ -1,0 +1,181 @@
+{
+  "totalProject": "0",
+  "PROJECTS": [
+    {
+      "projectID": "1",
+      "projectHeader": "Fragments",
+      "projectDescription": "",
+
+      "SECTIONS": [
+        {
+          "sectionID": "1",
+          "sectionType": "MG",
+          "sectionProjectID": "1",
+          "sectionHeader": "Fragment series",
+          "sectionDescription": "This series of paintings were made during the first lockdown in 2020. Restricted to stay indoors, these works marked the physical urge and immediate impulse to act on the leftover oil paint from my father’s palette, an act unlike any made by me in the past. (Or atleast I felt so in that moment) This paint was then translated as landscapes or in other words mindscapes on old and used pieces of canvas from my college days, a mundane material for any artist, found while doing household chores.           The paintings are intuitive fragments of memory, the self probably yearning for a utopian world, outside of Covid, its uncertainty and its reality. They symbolise hope, a sense of respite and relief in the mind’s eye. The works attempt at creating an aesthetic, a feeling of beauty from the purposeless, in order to create meaning and purpose.",
+
+          "IMAGES": [
+            {
+              "imgId": "1",
+              "imgLink": "assets/Images/Fragments/Fragment I.jpg",
+              "imgDescription": "Fragment I | Wasted oil paint on old, used canvas | 5.75 x 6.5 inches | 2020"
+            },
+            {
+              "imgId": "2",
+              "imgLink": "assets/Images/Fragments/Fragment II.JPG",
+              "imgDescription": "Fragment II | Wasted oil paint on old, used canvas | 4.5 x 7 inches | 2020"
+            },
+            {
+              "imgId": "3",
+              "imgLink": "assets/Images/Fragments/Fragment III.JPG",
+              "imgDescription": "Fragment III | Wasted oil paint on old, used canvas | 3 x 4 inches | 2020"
+            },
+            {
+              "imgId": "4",
+              "imgLink": "assets/Images/Fragments/Fragment IV.JPG",
+              "imgDescription": "Fragment IV | Wasted oil paint on old, used canvas | 2.2 x 4.8 inches | 2020"
+            },
+            {
+              "imgId": "5",
+              "imgLink": "assets/Images/Fragments/Fragment V.JPG",
+              "imgDescription": "Fragment V | Wasted oil paint on old, used canvas | 4.5 x 5.4 inches | 2020"
+            },
+            {
+              "imgId": "6",
+              "imgLink": "assets/Images/Fragments/Fragment VI.JPG",
+              "imgDescription": "Fragment VI | Wasted oil paint on old, used canvas | 4.2 x 6 inches | 2020"
+            },
+            {
+              "imgId": "7",
+              "imgLink": "assets/Images/Fragments/Fragment VII.JPG",
+              "imgDescription": "Fragment VII | Wasted oil paint on old, used canvas | 5 x 7 inches | 2020"
+            }
+          ]
+        },
+
+        {
+          "sectionID": "2",
+          "sectionType": "SD",
+          "sectionProjectID": "1",
+          "sectionHeader": "Accidental series",
+          "sectionDescription": "These two paintings: Accidental I and II, are quick works on paper which were intuitively made when I couldn’t create the painting that I actually wanted to: a painted piece of wall that broke off, from my own house. After several attempts at salvaging my painting, it seemed like the piece could not embody anything else, and preferred to remain as it is! Impulsively, I used the paint to create these sketches instead. The broken fragment is a part of the Memory Garden now. ",
+
+          "IMAGES": [
+            {
+              "imgId": "8",
+              "imgLink": "assets/Images/Fragments/IMG_2219.JPG",
+              "imgDescription": "Accidental I & Accidental II | Leftover oil paint on scrap paper | 3.9 x 9.4 inches | 2021"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectID": "2",
+      "projectHeader": "Thought Diaries",
+      "projectDescription": "Thought Diaries is a series of works which were created post Lockdown 1.0. As disparate works, they are an amalgamation of floating thoughts in the moment, combined with an attempt to understand transitory feelings. My own personal experiences along with objects that I observed in my daily routine have been translated as paintings and sketches/ drawings.",
+      "SECTIONS": [
+        {
+          "sectionID": "3",
+          "sectionType": "MG",
+          "sectionProjectID": "2",
+          "sectionHeader": "Match the Following series",
+          "sectionDescription": "Match the Following was a common exercise given to us in school, usually as instructions to match the correct words with visuals. This series is a take on this routine exercise, attempting to comprehend simple (yet complex) feelings through visual connotations. While emotions are broadly categorised, there are a range of transitory feelings that we are not able to understand psychologically. Like an observer of an onion, the gestures of a hand and natural terrains, I have tried to uncover and simultaneously depict the layers of gray within our transitory feelings, yet unable to fully match the word with the visual!",
+
+          "IMAGES": [
+            {
+              "imgId": "9",
+              "imgLink": "assets/Images/Thought_Diaries/match_the_Following_I.JPG",
+              "imgDescription": "Match the Following I | Ink on torn paper | Variable | 2020 | Match the following: strength, vulnerability, mental breakdown, despair, sensitivity"
+            },
+            {
+              "imgId": "10",
+              "imgLink": "assets/Images/Thought_Diaries/match_the_Following_II.JPG",
+              "imgDescription": "Match the Following II | Discarded lipstick on old sketches | Variable | 2021 | Match the following: angst, composure, irritability, contentment, void"
+            },
+            {
+              "imgId": "11",
+              "imgLink": "assets/Images/Thought_Diaries/match_the_Following_III.JPG",
+              "imgDescription": "Match the Following III | Digital photographs | Variable | 2021 | Temper, anticipation, pondering, apprehension, exhaustion"
+            },
+            {
+              "imgId": "12",
+              "imgLink": "assets/Images/Fragments/Fragment IV.JPG",
+              "imgDescription": "Fragment IV | Wasted oil paint on old, used canvas | 2.2 x 4.8 inches | 2020"
+            }
+          ]
+        },
+        {
+          "sectionID": "4",
+          "sectionType": "SD",
+          "sectionProjectID": "2",
+          "sectionHeader": "The Sponge",
+          "sectionDescription": "While I cleaned my faux suede shoes with the shoe cleaner, I realised it was just a sponge - A sponge that removed the dust by retaining it within itself. It toiled and tore, only to live a false life, concealed mostly within its lid. It was too shameful, after all, to wear that dust with pride. And, so it chose to wear off instead..",
+
+          "IMAGES": [
+            {
+              "imgId": "9",
+              "imgLink": "assets/Images/Thought_Diaries/IMG_1756.jpg",
+              "imgDescription": "The Sponge | Graphite on torn paper | 2020"
+            }
+          ]
+        },
+        {
+          "sectionID": "5",
+          "sectionType": "SD",
+          "sectionProjectID": "2",
+          "sectionHeader": "Crumpled",
+          "sectionDescription": "I don't know whether it's my body or my mind that feels twisted. A crumpled piece of paper spoke to me.",
+
+          "IMAGES": [
+            {
+              "imgId": "9",
+              "imgLink": "assets/Images/Thought_Diaries/Crumpled.jpg",
+              "imgDescription": "Crumpled | Graphite on torn paper | 2020"
+            }
+          ]
+        },
+        {
+          "sectionID": "5",
+          "sectionType": "MG",
+          "sectionProjectID": "2",
+          "sectionHeader": "Instantaneous",
+          "sectionDescription": "",
+
+          "IMAGES": [
+            {
+              "imgId": "9",
+              "imgLink": "assets/Images/Thought_Diaries/The_Aquarium.JPG",
+              "imgDescription": "The Aquarium | Acrylic on discarded board | 2020"
+            },
+            {
+              "imgId": "10",
+              "imgLink": "assets/Images/Thought_Diaries/Trying_to_remember_that_utopian green.JPG",
+              "imgDescription": "Trying to Remember that Utopian Green | Acrylic on discarded board | 2020"
+            },
+            {
+              "imgId": "10",
+              "imgLink": "assets/Images/Thought_Diaries/Relax_your_mind_said_the_mother_from_the_meditation_music.JPG",
+              "imgDescription": "'Relax your Mind', said the Mother from the Meditation Music | Acrylic on used canvas board | 2020"
+            }
+          ]
+        },
+        {
+          "sectionID": "6",
+          "sectionType": "S",
+          "sectionProjectID": "2",
+          "sectionHeader": "And she responded, 'No, I'm not married!'",
+          "sectionDescription": "",
+
+          "IMAGES": [
+            {
+              "imgId": "9",
+              "imgLink": "assets/Images/Thought_Diaries/And_she_responded,__No,_I_m_not_married!_.JPG",
+              "imgDescription": "And she responded, 'No, I'm not married!' | Graphite on torn paper | Variable | 2021"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
