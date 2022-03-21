@@ -1,247 +1,168 @@
-
-
 <div class="container">
-    
-
-    <!-- Image Modal to view enlarged Image. -->
-    <div class="opened-img" #imgModal>
-
-        <div class="btn-div">
-            <button (click)="closeModalImage()">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <div class="img-container">
-            <img src="{{curImgLink}}" alt="">
-            <p>{{curImgStatus}}</p>
-        </div>
+  <!-- Image Modal to view enlarged Image. -->
+  <div class="opened-img active" #imgModal>
+    <div class="btn-div">
+      <button (click)="closeModalImage()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
+    <div class="img-container">
+      <img src="{{ curImgLink }}" alt="" />
+      <p>{{ curImgStatus }}</p>
+    </div>
+  </div>
 
-    <div class="main-header">
-        <a routerLink="/home"><h1>TANAYA</h1></a> 
+  <div class="main-header">
+    <a routerLink="/home"><img src="assets/Images/name_small.png" alt=""></a>
+  </div>
+
+  <div class="phone-menu">
+    <button (click)="TogglePhoneMenu()" class="phone-menu-btn">
+      <div *ngIf="hamburger; then barsBlock; else crossBlock"></div>
+      <ng-template #crossBlock><i class="fa-solid fa-bars"></i></ng-template>
+      <ng-template #barsBlock><i class="fa-solid fa-xmark"></i></ng-template>
+    </button>
+  </div>
+
+  <div class="phone-side-bar" #phone_side_menu>
+    <div class="side-bar-menu">
+      <ul>
+        <li>
+          <a routerLink="/home">Home</a>
+        </li>
+
+        <li>
+          <a routerLink="/about">About</a>
+        </li>
+        <li>
+          <h3>Gallery</h3>
+
+          <ul *ngFor="let proj of serverData.PROJECTS; index as idx">
+            <li>
+              <a
+                (click)="switchProject(idx,true)"
+                [ngClass]="{ active: idx == curProject }"
+                >{{ proj.projectHeader }}</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a routerLink="/art-education">Art Education</a>
+        </li>
+
+        <li>
+          <a routerLink="/project-rants">Project/Rants</a>
+        </li>
+
+        <li>
+          <a routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divide-section">
+    <div class="side-bar">
+      <ul>
+        <li>
+          <a routerLink="/home">Home</a>
+        </li>
+
+        <li>
+          <a routerLink="/about">About</a>
+        </li>
+        <li>
+          <h3>Gallery</h3>
+
+          <ul *ngFor="let proj of serverData.PROJECTS; index as idx">
+            <li>
+              <a
+                (click)="switchProject(idx)"
+                [ngClass]="{ active: idx == curProject }"
+                >{{ proj.projectHeader }}</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a routerLink="/art-education">Art Education</a>
+        </li>
+
+        <li>
+          <a routerLink="/project-rants">Project/Rants</a>
+        </li>
+
+        <li>
+          <a routerLink="/contact">Contact</a>
+        </li>
+      </ul>
     </div>
 
-    <div class="phone-menu">
-        <button (click)="TogglePhoneMenu()" class="phone-menu-btn">
-            <div *ngIf="hamburger; then barsBlock else crossBlock"></div>
-            <ng-template #crossBlock><i class="fa-solid fa-bars"></i></ng-template>
-            <ng-template #barsBlock><i class="fa-solid fa-xmark"></i></ng-template>
-        </button>
-    </div>
+    <!-- This div wil contain all the gallery section -->
+    <div class="gallery-container">
+      <h1>{{ serverData.PROJECTS[curProject].projectHeader }}</h1>
+      <p>{{ serverData.PROJECTS[curProject].projectDescription }}</p>
 
-    <div class="phone-side-bar" #phone_side_menu>
-        <div class="side-bar-menu">
-            <ul>
-                <li>
-                    <a routerLink="/home">Home</a>
-                </li>
+      <div *ngFor="let pSection of serverData.PROJECTS[curProject].SECTIONS">
+        <!-- This section is for  -->
+        <div *ngIf="pSection.sectionType == 'MG'">
+          <div class="project-section-multiple-photos-layed">
+            <!-- Section header will always be there -->
+            <h2>{{ pSection.sectionHeader }}</h2>
 
-                <li>
-                    <a routerLink="/about">About</a>
-                </li>
-                <li>
-                    <h3>Gallery</h3>
-
-                    <ul>
-                        <li>
-                            <a href="/proj-1" class="active">Project 1</a>
-                        </li>
-                        <li>
-                            <a href="/proj-2">Project 2</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a routerLink="/art-education">Art Education</a>
-                </li>
-
-                <li>
-                    <a routerLink="/project-rants">Project/Rants</a>
-                </li>
-
-                <li>
-                    <a routerLink="/contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-    
-    
-    <div class="divide-section">
-
-        <div class="side-bar">
-            <ul>
-                <li>
-                    <a routerLink="/home">Home</a>
-                </li>
-
-                <li>
-                    <a routerLink="/about">About</a>
-                </li>
-                <li>
-                    <h3>Gallery</h3>
-
-                    <ul>
-                        <li>
-                            <a href="/proj-1" class="active">Project 1</a>
-                        </li>
-                        <li>
-                            <a href="/proj-2">Project 2</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a routerLink="/art-education">Art Education</a>
-                </li>
-
-                <li>
-                    <a routerLink="/project-rants">Project/Rants</a>
-                </li>
-
-                <li>
-                    <a routerLink="/contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- This div wil contain all the gallery section -->
-        <div class="gallery-container">
-            <!-- template project section for single photos and description -->
-            <div class="project-section-single-photo">
-                <h2>SECTION Name</h2>
-                <div class="description-divide">
-        
-                    <div class="img-overlay">
-                        <img src="assets/Images/Fragments/IMG_2219.JPG" (click)="openImage('assets/Images/Fragments/IMG_2219.JPG','Memorabilia | Found objects (locks, keys, pistachio shells, groundnut shells, bubble wrap, sea shells, cement) and mixed media on discarded paper | 25 x 26.5 inches | 2017 ')" alt="">
-                        <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
-                        <div class="img-description-short">
-                            <small>Memorabilia | Found objects (locks, keys, pistachio shells, groundnut shells, bubble wrap, sea shells, cement) and mixed media on discarded paper | 25 x 26.5 inches | 2017 </small>
-                        </div>
-                    </div>
-        
-                    <div class="img-description-long">
-                        <p>Memorabilia contains the little objects and materials that I used to enjoy collecting as a child. The cement pieces capture the associated memories in my mind, while the discarded bits of paper portray the images of my faint memory. The work created was a way through which I could date back my obsessions that I currently have: collecting discards and finding possibilities of using them through my art. </p>
-                    </div>
+            <div class="section-contents">
+              <!-- Section Description may or may not be there -->
+              <div *ngIf="pSection.sectionDescription.length > 1">
+                <div class="description-section">
+                  <p>{{ pSection.sectionDescription }}</p>
                 </div>
-            </div>
-    
-    
-            <!-- Template project section for multiple photos and single description (CAROUSAL) -->
-            <div class="project-section-multiple-photos">
-                <h2>Project Name 2</h2>
-                <div class="description-divide">
-        
-                    <div class="img-overlay">
+              </div>
 
-                        <!-- Here the image gallery would appear -->
-                        <div class="image-carousal" >
-                            <div class="image-carousal__img-gallary" #img_gallery>
-                                <div id="img-carousel" class="image-carousal__img-gallary__img-container" #img_carousel>
-                    
-                                    <div class="image-carousal__img-gallary__img-el">
-                                        <img src="https://cdn.pixabay.com/photo/2020/07/08/08/07/daisy-5383056_960_720.jpg" alt="" #one_image>
-                                    </div>
-                        
-                                    <div class="image-carousal__img-gallary__img-el">
-                                        <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFpc3l8ZW58MHx8MHx8&w=1000&q=80" alt="" >
-                                    </div>
-                        
-                                    <div class="image-carousal__img-gallary__img-el">
-                                        <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__480.jpg" alt="" >
-                                    </div>
-                        
-                                    <div class="image-carousal__img-gallary__img-el">
-                                        <img src="https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg" alt="" >
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="buttons">
-                                <button (click)="prev()" class="image-carousal__left-button">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </button>
-                                
-                        
-                                <button (click)="next()" class="image-carousal__right-button">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <div class="img-description-short">
-                            <small>Memorabilia | Found objects (locks, keys, pistachio shells, groundnut shells, bubble wrap, sea shells, cement) and mixed media on discarded paper | 25 x 26.5 inches | 2017 </small>
-                        </div>
-                    </div>
-        
-                    <div class="img-description-long">
-                        <p>Memorabilia contains the little objects and materials that I used to enjoy collecting as a child. The cement pieces capture the associated memories in my mind, while the discarded bits of paper portray the images of my faint memory. The work created was a way through which I could date back my obsessions that I currently have: collecting discards and finding possibilities of using them through my art. </p>
-                    </div>
+              <!-- Showing the images in grid format -->
+              <div *ngFor="let imageItem of pSection.IMAGES">
+                <div class="image-section">
+                  <img
+                    src="{{ imageItem.imgLink }}"
+                    (click)="
+                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                    "
+                    alt=""
+                  />
+                  <small>{{ imageItem.imgDescription }}</small>
                 </div>
+              </div>
             </div>
-            <!-- End of section -->
-
-
-            <!-- Template project section for multiple photos (with or without description) -->
-            <div class="project-section-multiple-photos-layed">
-                <h2>Fragment series</h2>
-
-                <div class="section-contents">
-
-                    <div class="description-section">
-                        <p>This series of paintings were made during the first lockdown in 2020. Restricted to stay indoors, these works marked the physical urge and immediate impulse to act on the leftover oil paint from my father’s palette, an act unlike any made by me in the past. (Or atleast I felt so in that moment) This paint was then translated as landscapes or in other words mindscapes on old and used pieces of canvas from my college days, a mundane material for any artist, found while doing household chores. 
-                            The paintings are intuitive fragments of memory, the self probably yearning for a utopian world, outside of Covid, its uncertainty and its reality. They symbolise hope, a sense of respite and relief in the mind’s eye. The works attempt at creating an aesthetic, a feeling of beauty from the purposeless, in order to create meaning and purpose. 
-                            </p>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment I.jpg" (click)="openImage('assets/Images/Fragments/Fragment I.jpg','Fragment I | Wasted oil paint on old, used canvas | 5.75 x 6.5 inches | 2020')" alt="">
-                        <small>Fragment I | Wasted oil paint on old, used canvas | 5.75 x 6.5 inches | 2020 </small>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment II.JPG" (click)="openImage('assets/Images/Fragments/Fragment II.JPG','Fragment II | Wasted oil paint on old, used canvas | 4.5 x 7 inches | 2020')" alt="">
-                        <small>Fragment II | Wasted oil paint on old, used canvas | 4.5 x 7 inches | 2020</small>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment III.JPG" (click)="openImage('assets/Images/Fragments/Fragment III.JPG','Fragment III | Wasted oil paint on old, used canvas | 3 x 4 inches | 2020')" alt="">
-                        <small>Fragment III | Wasted oil paint on old, used canvas | 3 x 4 inches | 2020</small>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment IV.JPG" (click)="openImage('assets/Images/Fragments/Fragment IV.JPG','Fragment IV | Wasted oil paint on old, used canvas | 2.2 x 4.8 inches | 2020')" alt="">
-                        <small>Fragment IV | Wasted oil paint on old, used canvas | 2.2 x 4.8 inches | 2020</small>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment V.JPG" (click)="openImage('assets/Images/Fragments/Fragment V.JPG','Fragment V | Wasted oil paint on old, used canvas | 4.5 x 5.4 inches | 2020')" alt="">
-                        <small>Fragment V | Wasted oil paint on old, used canvas | 4.5 x 5.4 inches | 2020</small>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment VI.JPG" (click)="openImage('assets/Images/Fragments/Fragment VI.JPG','Fragment VI | Wasted oil paint on old, used canvas | 4.2 x 6 inches | 2020')" alt="">
-                        <small>Fragment VI | Wasted oil paint on old, used canvas | 4.2 x 6 inches | 2020</small>
-                    </div>
-
-                    <div class="image-section">
-                        <img src="assets/Images/Fragments/Fragment VII.JPG" (click)="openImage('assets/Images/Fragments/Fragment VII.JPG','Fragment VII | Wasted oil paint on old, used canvas | 5 x 7 inches | 2020')" alt="">
-                        <small>Fragment VII | Wasted oil paint on old, used canvas | 5 x 7 inches | 2020</small>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
 
+        <div *ngIf="pSection.sectionType == 'SD'">
+          <div class="project-section-single-photo">
+            <h2>{{ pSection.sectionHeader }}</h2>
 
+            <div class="description-divide">
+              <div class="img-overlay">
 
+                <!-- Showing the first image Since SD type section will only have one image -->
+                <img src="{{pSection.IMAGES[0].imgLink}}" (click)="openImage(pSection.IMAGES[0].imgLink,pSection.IMAGES[0].imgDescription)" alt="">
+                <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
+                <div class="img-description-short">
+                    <small>{{pSection.IMAGES[0].imgDescription}}</small>
+                </div>
+              </div>
 
+              <div *ngIf="pSection.sectionDescription.length > 1">
+                <div class="img-description-long">
+                  <p>{{ pSection.sectionDescription }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
+  </div>
 </div>

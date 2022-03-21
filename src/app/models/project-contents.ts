@@ -1,13 +1,30 @@
-export interface ProjectContents {
+export interface ServerData{
+    totalProjects:number;
 
-    //  ***** THIS IS TEMPORARY OR PROPERLY DESIGNED JOIN OF ALL THE DATA FROM THE DATABASE.
-    //  ***** IDEA IS TO MERGE EVERYTHING AND SEND IT TO GALLERY APP AND DO THE PROCESSING THERE.
- 
+    // for list of projects
+    PROJECTS:ProjectGLRY[];
+}
+
+
+export interface ProjectGLRY{
     // Project part of the model
     projectID:string;
     projectHeader:string;
-    projectDescription:String;
+    projectDescription:string;
 
+    // for list of sections
+    SECTIONS:SectionGLRY[];
+
+
+    // ***** DIFFERENT TYPES OF SECTIONS ***** //
+    // (MG) -- multiple gallery contents
+    // (SD) -- Single image with description
+    // (S) -- Single Image with no description
+    // (MC) -- Multiple image with Carousal
+    // (MC) -- multiple image with carousal description
+}
+
+export interface SectionGLRY{
     // section part of the model
     sectionID:string;
     sectionType:string;
@@ -15,18 +32,14 @@ export interface ProjectContents {
     sectionHeader:string;
     sectionDescription:string;
 
+    // for list of images
+    IMAGES: ImagesGLRY[]
+}
 
+
+export interface ImagesGLRY{
     // Image part of the model
     imgId:string;
     imgLink:string;
     imgDescription:string;
-
-    // **************** THE TYPES OF SECTION SHOULD BE DECIDED PRIOR ******************
-    // Currently there are three ways that section is divided.
-    // 1: Single photo with description.                           SD
-    // 2: single photo without description                         S
-    // 3: Multiple photos carousal with description                MCD
-    // 4: Multiple photos carousal without description             MC
-    // 5: Multiple photos GRID layout                              MG
-    // ********************************************************************************
 }

@@ -36,7 +36,7 @@ $secondary-color: #fec5bb;
         background: transparent;
         font-size: 2rem;
         color: $primary-color;
-        z-index: 13;
+        z-index: 15;
 
         i {
           background: transparent;
@@ -55,6 +55,7 @@ $secondary-color: #fec5bb;
       background: transparent;
       position: relative;
       padding: 1rem;
+      box-sizing: border-box;
 
       display: flex;
       flex-direction: column;
@@ -63,8 +64,8 @@ $secondary-color: #fec5bb;
 
       img {
         background: transparent;
-        width: 85%;
-        height: 85%;
+        width: 90%;
+        height: 90%;
         object-fit: contain;
         z-index: 12;
       }
@@ -95,14 +96,17 @@ $secondary-color: #fec5bb;
   }
 
   a {
+    text-decoration: none;
+    color: $primary-dark;
+    cursor: pointer;
+
     &:hover {
       opacity: 0.8;
     }
   }
 
-  a {
-    text-decoration: none;
-    color: $primary-dark;
+  img{
+    cursor: pointer;
   }
 
   .main-header {
@@ -115,13 +119,8 @@ $secondary-color: #fec5bb;
     font-size: 2rem;
     font-weight: lighter;
     
-
-    a {
-      text-decoration: none;
-      color: $primary-dark;
-    }
-    &:hover {
-      opacity: 0.8;
+    img{
+      height: 8rem;
     }
   }
 
@@ -163,7 +162,14 @@ $secondary-color: #fec5bb;
     transform: translateX(-100%);
     transition: transform 0.2s ease-in-out;
     height: 100%;
-    background-color: $secondary-color;
+
+    background-image: url("../../assets/Images/bg_2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    // either color or image
+    // background-color: $secondary-color;
     z-index: 6;
     visibility: visible;
 
@@ -307,6 +313,7 @@ $secondary-color: #fec5bb;
                 font-size: 0.8rem;
               }
             }
+
           }
 
           .img-description-long {

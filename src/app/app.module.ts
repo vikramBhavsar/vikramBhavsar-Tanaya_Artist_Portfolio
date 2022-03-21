@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -16,11 +16,12 @@ import { PrjRantsComponent } from './prj-rants/prj-rants.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    PrjRantsComponent
+    PrjRantsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

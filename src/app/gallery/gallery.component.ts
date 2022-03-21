@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { GalleryDataService } from '../services/gallery-data.service';
+import { ServerData } from '../models/project-contents';
 
 @Component({
   selector: 'app-gallery',
@@ -7,7 +9,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class GalleryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private galleryService: GalleryDataService) { }
 
   currentImg:number = 0;
 
@@ -28,7 +30,16 @@ export class GalleryComponent implements OnInit {
   curImgLink:string = '../../assets/Images/Fragments/IMG_2219.JPG';
   curImgStatus:string = 'some wonderful text';
 
+
+  // **** VARIABLES FOR PROJECT SELECTION SECTION WISE **** //
+  curProject:number = 0;
+
+  serverData!:ServerData;
+
+
   ngOnInit(): void {
+
+    this.initializerGalleryData();
   }
 
   // for affecting view child
@@ -40,7 +51,12 @@ export class GalleryComponent implements OnInit {
 
 
 
-
+  initializerGalleryData(){
+    this.galleryService.getGalleryData().subscribe(res =>{
+      this.serverData = res;
+      console.log(this.serverData.PROJECTS);
+    });
+  }
 
   // **** SETTING THE IMAGE FOR MULTIPLE IMAGE SECTION FUNCTION
   setImageSizeForMultipleImageSection(){
@@ -120,6 +136,17 @@ export class GalleryComponent implements OnInit {
   // FUNCTION TO CLOSE THE IMAGE
   closeModalImage(){
     this.imgModal.nativeElement.classList.toggle("active");
+  }
+
+
+  // FUNCTION to select and change current project
+  switchProject(selectedProjID:number,fromPhone:boolean=false){
+    this.curProject = selectedProjID
+
+    // Closing the menu directly when selecting project from Side bar
+    if(fromPhone){
+      this.TogglePhoneMenu();
+    }
   }
 
 }
