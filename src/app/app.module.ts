@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { PrjRantsComponent } from './prj-rants/prj-rants.component';
+import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PrjRantsComponent } from './prj-rants/prj-rants.component';
     AboutComponent,
     ContactComponent,
     PrjRantsComponent,
+    TextFormatterComponent,
   ],
   imports: [
     BrowserModule,

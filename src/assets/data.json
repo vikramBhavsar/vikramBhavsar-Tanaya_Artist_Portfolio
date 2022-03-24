@@ -97,11 +97,6 @@
               "imgId": "11",
               "imgLink": "assets/Images/Thought_Diaries/match_the_Following_III.JPG",
               "imgDescription": "Match the Following III | Digital photographs | Variable | 2021 | Temper, anticipation, pondering, apprehension, exhaustion"
-            },
-            {
-              "imgId": "12",
-              "imgLink": "assets/Images/Fragments/Fragment IV.JPG",
-              "imgDescription": "Fragment IV | Wasted oil paint on old, used canvas | 2.2 x 4.8 inches | 2020"
             }
           ]
         },
@@ -172,6 +167,58 @@
               "imgId": "9",
               "imgLink": "assets/Images/Thought_Diaries/And_she_responded,__No,_I_m_not_married!_.JPG",
               "imgDescription": "And she responded, 'No, I'm not married!' | Graphite on torn paper | Variable | 2021"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectID": "3",
+      "projectHeader": "Roller Paintings",
+      "projectDescription": "These works arose from the need to use worn out tools, which I found in my studio during BFA: a roller that had lost its elasticity to spread paint and a squeegee that had a damaged rubber surface. The act of rolling, squeezing, dabbing, pouring and dripping became significant to me, as they implied that I was doing something: the expressionist tendency towards which I leaned, was new to me at the time. &nbsp;      The works served as instant intuitive urges, while I worked on multiple canvases at once. Even though I did not have an end image in mind, I observed that subconsciously, the works often resembled nature, at the point where I decided to stop painting further. It was probably a way through which I could escape my conscious mind, simultaneously have the satisfaction of doing something and attempt to find meaning through the process (atleast try to!). &nbsp; None of the paintings in the series exist anymore (apart from Haze). They were reused/ recycled as other works.",
+      "SECTIONS": [
+        {
+          "sectionID": "3",
+          "sectionType": "MG",
+          "sectionProjectID": "3",
+          "sectionHeader": "",
+          "sectionDescription": "",
+
+          "IMAGES": [
+            {
+              "imgId": "10",
+              "imgLink": "assets/Images/Roller_Paintings/Blur.jpg",
+              "imgDescription": "Blur | Acrylic on canvas | 36 x 48 inches |2016"
+            },
+            {
+              "imgId": "11",
+              "imgLink": "assets/Images/Roller_Paintings/Blurry.jpg",
+              "imgDescription": "Blurry | Acrylic on canvas | 24 x 30 | 2016"
+            },
+            {
+              "imgId": "12",
+              "imgLink": "assets/Images/Roller_Paintings/Fade.jpg",
+              "imgDescription": "Fade | Oil on canvas | 30 x 24 inches | 2016"
+            },
+            {
+              "imgId": "12",
+              "imgLink": "assets/Images/Roller_Paintings/Haze.jpg",
+              "imgDescription": "Haze | Acrylic on canvas | 20 x 20 inches | 2016"
+            },
+            {
+              "imgId": "12",
+              "imgLink": "assets/Images/Roller_Paintings/Misty.jpg",
+              "imgDescription": "Misty | Acrylic on canvas | 24 x 24 inches | 2016"
+            },
+            {
+              "imgId": "12",
+              "imgLink": "assets/Images/Roller_Paintings/Reflect_Reflected.jpg",
+              "imgDescription": "Reflect, Reflected | Acrylic on canvas | 24 x 24 inches | 2016"
+            },
+            {
+              "imgId": "12",
+              "imgLink": "assets/Images/Roller_Paintings/The_Room.jpg",
+              "imgDescription": "The Room | Acrylic on canvas | 24 x 24 inches | 2016"
             }
           ]
         }

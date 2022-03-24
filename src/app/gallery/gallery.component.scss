@@ -63,6 +63,7 @@ $secondary-color: #fec5bb;
       align-items: center;
 
       img {
+        padding-top: 1rem;
         background: transparent;
         width: 90%;
         height: 90%;
@@ -103,6 +104,9 @@ $secondary-color: #fec5bb;
     &:hover {
       opacity: 0.8;
     }
+  }
+  p{
+    text-align: justify;
   }
 
   img{
@@ -162,6 +166,7 @@ $secondary-color: #fec5bb;
     transform: translateX(-100%);
     transition: transform 0.2s ease-in-out;
     height: 100%;
+    overflow-y: auto;
 
     background-image: url("../../assets/Images/bg_2.png");
     background-repeat: no-repeat;
@@ -280,6 +285,13 @@ $secondary-color: #fec5bb;
       height: 100%;
       overflow-y: none;
 
+      // ** this is main project heading
+      h1{
+        text-transform: uppercase;
+        font-size: 3rem;
+        letter-spacing: 0.5rem;
+      }
+
       // Project section for single photos with description
       .project-section-single-photo {
         display: grid;
@@ -297,19 +309,21 @@ $secondary-color: #fec5bb;
           grid-template-columns: 70% 30%;
 
           .img-overlay {
-            padding: 1rem;
+            padding: 0.5rem;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
 
             img {
-              width: 95%;
-              height: 80%;
-              object-fit: contain;
+              width: 100%;
+              height: 30rem;
+              object-fit: cover;
+              background:#fec5bb;
             }
 
             .img-description-short {
               width: 100%;
+              height: 20%;
               display: flex;
               justify-content: center;
               small {
@@ -320,11 +334,11 @@ $secondary-color: #fec5bb;
           }
 
           .img-description-long {
-            padding: 1rem;
+            padding: 0.5rem;
             font-size: 1.2rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: left;
             align-items: center;
           }
         }
@@ -334,6 +348,7 @@ $secondary-color: #fec5bb;
       .project-section-multiple-photos {
         display: grid;
         grid-template-columns: 1fr;
+        
 
         h2 {
           padding: 1rem;
@@ -452,6 +467,7 @@ $secondary-color: #fec5bb;
       .project-section-multiple-photos-layed {
         display: grid;
         grid-template-columns: 1fr;
+        
 
         h2 {
           padding: 1rem;
@@ -464,6 +480,7 @@ $secondary-color: #fec5bb;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           box-sizing: border-box;
+          gap: 5px;
 
           .description-section {
             padding: 2rem;
@@ -476,6 +493,7 @@ $secondary-color: #fec5bb;
           .image-section {
             display: grid;
             grid-template-columns: 1fr;
+            
             img {
               width: 100%;
               height: 100%;
