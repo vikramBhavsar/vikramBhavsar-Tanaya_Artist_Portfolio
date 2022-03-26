@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { PrjRantsComponent } from './prj-rants/prj-rants.component';
 import { TextFormatterComponent } from './text-formatter/text-formatter.component';
+import { MainAppComponent } from './main-app/main-app.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TextFormatterComponent } from './text-formatter/text-formatter.componen
     ContactComponent,
     PrjRantsComponent,
     TextFormatterComponent,
+    MainAppComponent,
   ],
   imports: [
     BrowserModule,

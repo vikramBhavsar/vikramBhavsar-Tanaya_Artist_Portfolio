@@ -7,13 +7,26 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { PrjRantsComponent } from './prj-rants/prj-rants.component';
+import { MainAppComponent } from './main-app/main-app.component';
 
 const routes: Routes = [
-  { path: 'gallery', component: GalleryComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
   { path: 'project-rants', component: PrjRantsComponent },
+  { path: 'T', component:  MainAppComponent , children:[
+    {
+      path:'gallery/:projectid',
+      component:  GalleryComponent
+    },
+    {
+      path:'about',
+      component:  AboutComponent
+    },
+    {
+      path:'contact',
+      component:  ContactComponent
+    }
+  ]},
+  
   { path: '', component: HomeComponent },
 ];
 
