@@ -105,405 +105,233 @@ $secondary-color: #fec5bb;
       opacity: 0.8;
     }
   }
-  p{
+  p {
     text-align: justify;
   }
 
-  img{
+  img {
     cursor: pointer;
   }
 
-  .main-header {
-    margin-bottom: 0.2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    padding: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1rem;
-    font-size: 2rem;
-    font-weight: lighter;
-    
-    img{
-      height: 8rem;
-    }
-  }
-
-  // This is the hamburger menu
-  .phone-menu {
-    display: none;
-    button {
-      position: fixed;
-      cursor: pointer;
-      right: 1rem;
-      top: 1rem;
-      width: 2rem;
-      height: 2rem;
-      border: none;
-      background-color: rgba($color: white, $alpha: 0.8);
-      border-radius: 5px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 7;
-      box-sizing: border-box;
-
-      i {
-        font-size: 1.5rem;
-        width: fit-content;
-        background: transparent;
-      }
-    }
-  }
-
-  // Phone side bar in for mobile
-  .phone-side-bar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    transform: translateX(-100%);
-    transition: transform 0.2s ease-in-out;
+  .gallery-container {
     height: 100%;
-    overflow-y: auto;
+    overflow-y: none;
 
-    background-image: url("../../assets/Images/bg_2.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    // either color or image
-    // background-color: $secondary-color;
-    z-index: 6;
-    visibility: visible;
-
-    .side-bar-menu {
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-
-      ul {
-        background: transparent;
-        list-style: none;
-
-        li {
-          margin-top: 1rem;
-          background: transparent;
-
-          h3 {
-            font-size: 2.5rem;
-          }
-
-          ul {
-            margin-top: 1rem;
-            margin-left: 2rem;
-            margin-bottom: 2rem;
-
-            li {
-              margin-top: 1rem;
-
-              & .active {
-                // border-left: 2px $primary-dark solid;
-                // border: 2px $primary-dark solid;
-                background-color: $primary-dark;
-                color: $primary-color;
-                padding: 0.5rem;
-                padding-left: 2rem;
-              }
-            }
-          }
-
-          a {
-            // background: transparent;
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
-  }
-
-  // Active class for switching css
-  .phone-side-menu-active {
-    transform: translateX(0%);
-  }
-
-  // This is the main section where side bar and gallery go.
-  .divide-section {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    overflow: hidden;
-    padding: 0rem;
-    margin: 0rem;
-
-    .side-bar {
-      // overflow-y: auto;
-      height: 100%;
-      margin: 1rem;
-      padding: 1rem;
-      font-size: 1rem;
+    // ** this is main project heading
+    h1 {
       text-transform: uppercase;
+      font-size: 3rem;
+      letter-spacing: 0.5rem;
+    }
 
-      ul {
-        text-decoration: none;
-        list-style: none;
+    // Project section for single photos with description
+    .project-section-single-photo {
+      display: grid;
+      grid-template-columns: 1fr;
 
-        li {
-          text-decoration: none;
+      h2 {
+        padding: 1rem;
+        font-size: 2rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
 
-          ul {
-            margin-top: 1rem;
-            margin-left: 2rem;
-            margin-bottom: 2rem;
+      .description-divide {
+        display: grid;
+        grid-template-columns: 70% 30%;
 
-            li {
-              margin-top: 1rem;
+        .img-overlay {
+          padding: 0.5rem;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
 
-              & .active {
-                // border-left: 2px $primary-dark solid;
-                // border: 2px $primary-dark solid;
-                background-color: $primary-dark;
-                color: $primary-color;
-                padding: 0.5rem;
-                padding-left: 2rem;
-              }
+          img {
+            width: 100%;
+            height: 30rem;
+            object-fit: cover;
+            background: #fec5bb;
+          }
+
+          .img-description-short {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            small {
+              font-size: 0.8rem;
             }
           }
+        }
 
-          a {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-          }
+        .img-description-long {
+          padding: 0.5rem;
+          font-size: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: left;
+          align-items: center;
         }
       }
     }
 
-    .gallery-container {
-      height: 100%;
-      overflow-y: none;
+    //Project section for multiple image with description (CAROUSAL)
+    .project-section-multiple-photos {
+      display: grid;
+      grid-template-columns: 1fr;
 
-      // ** this is main project heading
-      h1{
+      h2 {
+        padding: 1rem;
+        font-size: 2rem;
+        letter-spacing: 5px;
         text-transform: uppercase;
-        font-size: 3rem;
-        letter-spacing: 0.5rem;
       }
 
-      // Project section for single photos with description
-      .project-section-single-photo {
+      .description-divide {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 70% 30%;
 
-        h2 {
+        .img-overlay {
           padding: 1rem;
-          font-size: 2rem;
-          letter-spacing: 5px;
-          text-transform: uppercase;
-        }
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          box-sizing: border-box;
 
-        .description-divide {
-          display: grid;
-          grid-template-columns: 70% 30%;
-
-          .img-overlay {
-            padding: 0.5rem;
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-
-            img {
-              width: 100%;
-              height: 30rem;
-              object-fit: cover;
-              background:#fec5bb;
-            }
-
-            .img-description-short {
-              width: 100%;
-              height: 20%;
-              display: flex;
-              justify-content: center;
-              small {
-                font-size: 0.8rem;
-              }
-            }
-
-          }
-
-          .img-description-long {
-            padding: 0.5rem;
-            font-size: 1.2rem;
+          // Carousal CSS added
+          .image-carousal {
             display: flex;
             flex-direction: column;
-            justify-content: left;
+            justify-content: center;
             align-items: center;
-          }
-        }
-      }
 
-      //Project section for multiple image with description (CAROUSAL)
-      .project-section-multiple-photos {
-        display: grid;
-        grid-template-columns: 1fr;
-        
+            .image-carousal__img-gallary {
+              // width: $image-width;
+              height: $image-height;
 
-        h2 {
-          padding: 1rem;
-          font-size: 2rem;
-          letter-spacing: 5px;
-          text-transform: uppercase;
-        }
+              //  Setting size dynamically
+              width: 100%;
+              height: 100%;
+              display: block;
+              // height: 60vh;
+              overflow: hidden;
 
-        .description-divide {
-          display: grid;
-          grid-template-columns: 70% 30%;
-
-          .img-overlay {
-            padding: 1rem;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-
-            // Carousal CSS added
-            .image-carousal {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-
-              .image-carousal__img-gallary {
+              .image-carousal__img-gallary__img-container {
                 // width: $image-width;
                 height: $image-height;
 
                 //  Setting size dynamically
                 width: 100%;
                 height: 100%;
-                display: block;
-                // height: 60vh;
-                overflow: hidden;
+                // display: block;
+                display: flex;
+                flex-direction: row;
 
-                .image-carousal__img-gallary__img-container {
+                .image-carousal__img-gallary__img-el {
                   // width: $image-width;
                   height: $image-height;
 
                   //  Setting size dynamically
                   width: 100%;
                   height: 100%;
-                  // display: block;
                   display: flex;
-                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
 
-                  .image-carousal__img-gallary__img-el {
+                  img {
+                    object-fit: contain;
+                    object-position: center;
                     // width: $image-width;
-                    height: $image-height;
+                    // height: $image-height;
 
                     //  Setting size dynamically
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    img {
-                      object-fit: contain;
-                      object-position: center;
-                      // width: $image-width;
-                      // height: $image-height;
-
-                      //  Setting size dynamically
-                      width: 95%;
-                      height: $image-height;
-                    }
+                    width: 95%;
+                    height: $image-height;
                   }
-
-                  transform: translateX(0);
-                  transition: transform 0.5s ease-in-out;
                 }
-              }
 
-              .buttons {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                width: 100%;
-                align-items: center;
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-
-                button {
-                  font-size: 1rem;
-                  width: 5rem;
-                  border: none;
-                  cursor: pointer;
-                }
+                transform: translateX(0);
+                transition: transform 0.5s ease-in-out;
               }
             }
-            // end of carousal css
 
-            .img-description-short {
-              small {
-                font-size: 0.8rem;
+            .buttons {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              width: 100%;
+              align-items: center;
+              margin-top: 1rem;
+              margin-bottom: 1rem;
+
+              button {
+                font-size: 1rem;
+                width: 5rem;
+                border: none;
+                cursor: pointer;
               }
             }
           }
+          // end of carousal css
 
-          .img-description-long {
-            padding: 1rem;
-            font-size: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+          .img-description-short {
+            small {
+              font-size: 0.8rem;
+            }
           }
+        }
+
+        .img-description-long {
+          padding: 1rem;
+          font-size: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
       }
+    }
 
-      // Project section for multiple images
-      .project-section-multiple-photos-layed {
+    // Project section for multiple images
+    .project-section-multiple-photos-layed {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      h2 {
+        padding: 1rem;
+        font-size: 2rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
+
+      .section-contents {
         display: grid;
-        grid-template-columns: 1fr;
-        
+        grid-template-columns: 1fr 1fr 1fr;
+        box-sizing: border-box;
+        gap: 5px;
 
-        h2 {
-          padding: 1rem;
-          font-size: 2rem;
-          letter-spacing: 5px;
-          text-transform: uppercase;
+        .description-section {
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
 
-        .section-contents {
+        .image-section {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          box-sizing: border-box;
-          gap: 5px;
+          grid-template-columns: 1fr;
 
-          .description-section {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
           }
 
-          .image-section {
-            display: grid;
-            grid-template-columns: 1fr;
-            
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-            }
-
-            small {
-              text-align: center;
-              padding: 1rem;
-            }
+          small {
+            text-align: center;
+            padding: 1rem;
           }
         }
       }
@@ -515,89 +343,77 @@ $secondary-color: #fec5bb;
 // For Tablets
 // @media only screen and (min-width: 980px) and (max-width: 1023px) { -- original tablet
 @media only screen and (min-width: 767px) and (max-width: 1023px) {
-    $image-width: 30rem;
-    $image-height: 30rem;
-  
-    .container {
-      // This is the hamburger menu
-      .phone-menu {
-        display: block;
-      }
-  
-      // This is the main section where side bar and gallery go.
-      .divide-section {
-        display: grid;
+  $image-width: 30rem;
+  $image-height: 30rem;
+
+  .container {
+    // This is the hamburger menu
+    .phone-menu {
+      display: block;
+    }
+
+    .gallery-container {
+      // Project section for single photos with description
+      .project-section-single-photo {
         grid-template-columns: 1fr;
-  
-        .side-bar {
-          display: none;
+
+        .description-divide {
+          grid-template-columns: 1fr;
+
+          .img-overlay {
+            padding: 1rem;
+
+            .img-description-short {
+              small {
+                font-size: 0.8rem;
+              }
+            }
+          }
+
+          .img-description-long {
+            padding: 1rem;
+            font-size: 1.2rem;
+          }
         }
-  
-        .gallery-container {
-  
-  
-          // Project section for single photos with description
-          .project-section-single-photo {
-            grid-template-columns: 1fr;
-  
-            .description-divide {
-              grid-template-columns: 1fr;
-  
-              .img-overlay {
-                padding: 1rem;
-  
-                .img-description-short {
-                  small {
-                    font-size: 0.8rem;
-                  }
-                }
-              }
-  
-              .img-description-long {
-                padding: 1rem;
-                font-size: 1.2rem;
+      }
+
+      //Project section for multiple image with description
+      .project-section-multiple-photos {
+        grid-template-columns: 1fr;
+
+        .description-divide {
+          display: grid;
+          grid-template-columns: 1fr;
+
+          .img-overlay {
+            .img-description-short {
+              small {
+                font-size: 0.8rem;
               }
             }
           }
-  
-          //Project section for multiple image with description
-          .project-section-multiple-photos {
-            grid-template-columns: 1fr;
-  
-            .description-divide {
-              display: grid;
-              grid-template-columns: 1fr;
-  
-              .img-overlay {
-                .img-description-short {
-                  small {
-                    font-size: 0.8rem;
-                  }
-                }
-              }
-  
-              .img-description-long {
-                padding: 1rem;
-                font-size: 1.2rem;
-              }
-            }
+
+          .img-description-long {
+            padding: 1rem;
+            font-size: 1.2rem;
           }
-  
-          // Project section for multiple images
-          .project-section-multiple-photos-layed {
-            grid-template-columns: 1fr;
-  
-            .section-contents {
-              grid-template-columns: 1fr 1fr;
-  
-              .image-section {
-                padding: 1rem;
-              }
-            }
+        }
+      }
+
+      // Project section for multiple images
+      .project-section-multiple-photos-layed {
+        grid-template-columns: 1fr;
+
+        .section-contents {
+          grid-template-columns: 1fr 1fr;
+
+          .image-section {
+            padding: 1rem;
           }
         }
       }
     }
+  }
 }
 
 // // For mobile Landscape
@@ -615,75 +431,63 @@ $secondary-color: #fec5bb;
       display: block;
     }
 
-    // This is the main section where side bar and gallery go.
-    .divide-section {
-      display: grid;
-      grid-template-columns: 1fr;
+    .gallery-container {
+      // Project section for single photos with description
+      .project-section-single-photo {
+        grid-template-columns: 1fr;
 
-      .side-bar {
-        display: none;
+        .description-divide {
+          grid-template-columns: 1fr;
+
+          .img-overlay {
+            padding: 1rem;
+
+            .img-description-short {
+              small {
+                font-size: 0.8rem;
+              }
+            }
+          }
+
+          .img-description-long {
+            padding: 1rem;
+            font-size: 1.2rem;
+          }
+        }
       }
 
-      .gallery-container {
+      //Project section for multiple image with description
+      .project-section-multiple-photos {
+        grid-template-columns: 1fr;
 
-
-        // Project section for single photos with description
-        .project-section-single-photo {
+        .description-divide {
+          display: grid;
           grid-template-columns: 1fr;
 
-          .description-divide {
-            grid-template-columns: 1fr;
-
-            .img-overlay {
-              padding: 1rem;
-
-              .img-description-short {
-                small {
-                  font-size: 0.8rem;
-                }
+          .img-overlay {
+            .img-description-short {
+              small {
+                font-size: 0.8rem;
               }
             }
+          }
 
-            .img-description-long {
-              padding: 1rem;
-              font-size: 1.2rem;
-            }
+          .img-description-long {
+            padding: 1rem;
+            font-size: 1.2rem;
           }
         }
+      }
 
-        //Project section for multiple image with description
-        .project-section-multiple-photos {
+      // Project section for multiple images
+      .project-section-multiple-photos-layed {
+        grid-template-columns: 1fr;
+
+        .section-contents {
           grid-template-columns: 1fr;
 
-          .description-divide {
-            display: grid;
-            grid-template-columns: 1fr;
-
-            .img-overlay {
-              .img-description-short {
-                small {
-                  font-size: 0.8rem;
-                }
-              }
-            }
-
-            .img-description-long {
-              padding: 1rem;
-              font-size: 1.2rem;
-            }
-          }
-        }
-
-        // Project section for multiple images
-        .project-section-multiple-photos-layed {
-          grid-template-columns: 1fr;
-
-          .section-contents {
-            grid-template-columns: 1fr;
-
-            .image-section {
-              padding: 1rem;
-            }
+          .image-section {
+            padding: 1rem;
           }
         }
       }

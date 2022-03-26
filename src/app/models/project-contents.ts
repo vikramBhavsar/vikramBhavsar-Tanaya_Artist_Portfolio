@@ -1,10 +1,7 @@
 export interface ServerData{
-    totalProjects:number;
-
     // for list of projects
     PROJECTS:ProjectGLRY[];
 }
-
 
 export interface ProjectGLRY{
     // Project part of the model
