@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PrjRantsComponent } from './prj-rants/prj-rants.component';
 import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 import { MainAppComponent } from './main-app/main-app.component';
+import { MarkdownPipe } from './pipes/markdown.pipe';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,14 @@ import { MainAppComponent } from './main-app/main-app.component';
     PrjRantsComponent,
     TextFormatterComponent,
     MainAppComponent,
+    MarkdownPipe,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
