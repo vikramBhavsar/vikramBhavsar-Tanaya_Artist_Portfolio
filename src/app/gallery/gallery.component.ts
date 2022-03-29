@@ -16,6 +16,25 @@ import {
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
+
+
+ // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
+ // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
+
+ text1:string = "# Hello World\n *hi there* and you are **awespme**";
+ text2:string = "# Hello there **how are you** -[ ] Hi there";
+ // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
+ // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
+
+
+
+
+
+
+
+
+
+
   constructor(
     private galleryService: GalleryDataService,
     private route: ActivatedRoute,
