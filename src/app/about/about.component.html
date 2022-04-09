@@ -1,1 +1,16 @@
 <p>about works!</p>
+
+
+<div class="container">
+    <div class="content">
+        <div *ngFor="let sec of content">
+            <h2 *ngIf="sec.heading.length > 0">{{sec.heading}}</h2>
+
+            <p [innerHTML]="sec.content | markdown"></p>
+        </div>
+    </div>
+
+    <div class="image-side">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/181018_%EC%86%90%EC%98%88%EC%A7%84_04_%28cropped%29.jpg/220px-181018_%EC%86%90%EC%98%88%EC%A7%84_04_%28cropped%29.jpg" alt="">
+    </div>
+</div>

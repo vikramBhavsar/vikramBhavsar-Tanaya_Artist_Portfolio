@@ -126,7 +126,7 @@ $secondary-color: #fec5bb;
                 background-color: $primary-dark;
                 color: $primary-color;
                 padding: 0.5rem;
-                padding-left: 2rem;
+                // padding-left: 2rem;
               }
             }
           }
@@ -169,6 +169,12 @@ $secondary-color: #fec5bb;
         li {
           text-decoration: none;
 
+          .main-header{
+            object-fit: cover;
+            width: 10rem;
+          }
+
+
           ul {
             margin-top: 1rem;
             margin-left: 2rem;
@@ -182,8 +188,9 @@ $secondary-color: #fec5bb;
                 // border: 2px $primary-dark solid;
                 background-color: $primary-dark;
                 color: $primary-color;
-                padding: 0.5rem;
-                padding-left: 2rem;
+                line-height: 3px;
+                padding: 2px;
+                padding-left: 0.5rem;
               }
             }
           }

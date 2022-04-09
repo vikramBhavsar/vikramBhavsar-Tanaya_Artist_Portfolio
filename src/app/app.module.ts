@@ -12,6 +12,7 @@ import { PrjRantsComponent } from './prj-rants/prj-rants.component';
 import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 import { MainAppComponent } from './main-app/main-app.component';
 import { MarkdownPipe } from './pipes/markdown.pipe';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MarkdownPipe } from './pipes/markdown.pipe';
     TextFormatterComponent,
     MainAppComponent,
     MarkdownPipe,
+    SafeUrlPipe,
     
   ],
   imports: [

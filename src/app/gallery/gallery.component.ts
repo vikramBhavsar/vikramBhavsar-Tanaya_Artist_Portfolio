@@ -18,23 +18,6 @@ import {
 export class GalleryComponent implements OnInit {
 
 
- // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
- // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
-
- text1:string = "# Hello World\n *hi there* and you are **awespme**";
- text2:string = "# Hello there **how are you** -[ ] Hi there";
- // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
- // ************************** TEMPORARY MARKDOWN TESTING VARIABLES ***************
-
-
-
-
-
-
-
-
-
-
   constructor(
     private galleryService: GalleryDataService,
     private route: ActivatedRoute,
@@ -95,6 +78,7 @@ export class GalleryComponent implements OnInit {
 
   initializerGalleryData() {
     this.galleryService.getGalleryData().subscribe((res) => {
+      this.serverData = this.processResultsForLayout(res);
       this.serverData = res;
       console.log(this.serverData.PROJECTS);
     });
@@ -114,6 +98,18 @@ export class GalleryComponent implements OnInit {
       imgItem.firstElementChild.style.width = `${imgValue}px`;
     }
   }
+
+
+
+
+  // **** THis function will process the data and put proper layout for content
+  processResultsForLayout(resultsData: ServerData): ServerData{
+
+    
+
+
+    return resultsData;
+  } 
 
   // **** TURNING THE IMAGES ON RIGHT SIDE.
   next() {

@@ -16,9 +16,11 @@ export interface ProjectGLRY{
     // ***** DIFFERENT TYPES OF SECTIONS ***** //
     // (MG) -- multiple gallery contents
     // (SD) -- Single image with description
-    // (S) -- Single Image with no description
+    // (S) -- Single Image with no description (currently looks okay)
     // (MC) -- Multiple image with Carousal
     // (MC) -- multiple image with carousal description
+    // (3W) -- Three images without description
+    // (2W) -- Two images without description
 }
 
 export interface SectionGLRY{
@@ -38,5 +40,6 @@ export interface ImagesGLRY{
     // Image part of the model
     imgId:string;
     imgLink:string;
+    isVideo:string;
     imgDescription:string;
 }

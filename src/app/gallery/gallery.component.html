@@ -9,19 +9,22 @@
 
     <div class="img-container">
       <img src="{{ curImgLink }}" alt="" />
-      <p>{{ curImgStatus }}</p>
+      <!-- <p>{{ curImgStatus | markdown }}</p> -->
+      <p [innerHTML]="curImgStatus | markdown"></p>
     </div>
   </div>
 
   <!-- This div wil contain all the gallery section -->
   <div class="gallery-container">
-    <div [innerHTML]="text1 | markdown "></div>
-
     <h1>{{ serverData.PROJECTS[curProject].projectHeader }}</h1>
-    <p>{{ serverData.PROJECTS[curProject].projectDescription }}</p>
+    <p
+      [innerHTML]="
+        serverData.PROJECTS[curProject].projectDescription | markdown
+      "
+    ></p>
 
     <div *ngFor="let pSection of serverData.PROJECTS[curProject].SECTIONS">
-      <!-- This section is for  -->
+      <!-- This section is for MULTIPLE IMAGES -->
       <div *ngIf="pSection.sectionType == 'MG'">
         <div class="project-section-multiple-photos-layed">
           <!-- Section header will always be there -->
@@ -31,27 +34,54 @@
             <!-- Section Description may or may not be there -->
             <div *ngIf="pSection.sectionDescription.length > 1">
               <div class="description-section">
-                <p>{{ pSection.sectionDescription }}</p>
+                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
               </div>
             </div>
 
             <!-- Showing the images in grid format -->
             <div *ngFor="let imageItem of pSection.IMAGES">
-              <div class="image-section">
-                <img
-                  src="{{ imageItem.imgLink }}"
-                  (click)="
-                    openImage(imageItem.imgLink, imageItem.imgDescription)
-                  "
-                  alt=""
-                />
-                <small>{{ imageItem.imgDescription }}</small>
-              </div>
+              <!-- Below code is distinct for IMAGES AND VIDEO TOGER -->
+              <div
+                *ngIf="
+                  imageItem.isVideo == 'y';
+                  then videoBlockMG;
+                  else imgBlockMG
+                "
+              ></div>
+              <ng-template #videoBlockMG>
+                <div class="video-section">
+                  <div class="iframe-container">
+                    <iframe
+                      [src]="imageItem.imgLink | safeUrl: 'resourceUrl'"
+                      frameborder="0"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                  <small
+                    [innerHTML]="imageItem.imgDescription | markdown"
+                  ></small>
+                </div>
+              </ng-template>
+              <ng-template #imgBlockMG>
+                <div class="image-section">
+                  <img
+                    src="{{ imageItem.imgLink }}"
+                    (click)="
+                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                    "
+                    alt=""
+                  />
+                  <small
+                    [innerHTML]="imageItem.imgDescription | markdown"
+                  ></small>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- THis section is for single photo with description -->
       <div *ngIf="pSection.sectionType == 'SD'">
         <div class="project-section-single-photo">
           <h2>{{ pSection.sectionHeader }}</h2>
@@ -71,13 +101,114 @@
               />
               <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
               <div class="img-description-short">
-                <small>{{ pSection.IMAGES[0].imgDescription }}</small>
+                <small
+                  [innerHTML]="pSection.IMAGES[0].imgDescription | markdown"
+                  >{{ pSection.IMAGES[0].imgDescription | markdown }}</small
+                >
               </div>
             </div>
 
             <div *ngIf="pSection.sectionDescription.length > 1">
               <div class="img-description-long">
-                <p>{{ pSection.sectionDescription }}</p>
+                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THis section is for single photo WITHOUT description -->
+      <div *ngIf="pSection.sectionType == 'S'">
+        <div class="project-section-single-photo-without-description">
+          <h2>{{ pSection.sectionHeader }}</h2>
+
+          <div class="img-overlay">
+            <!-- Showing the first image Since SD type section will only have one image -->
+            <img
+              src="{{ pSection.IMAGES[0].imgLink }}"
+              (click)="
+                openImage(
+                  pSection.IMAGES[0].imgLink,
+                  pSection.IMAGES[0].imgDescription
+                )
+              "
+              alt=""
+            />
+            <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
+            <div class="img-description-short">
+              <small
+                [innerHTML]="pSection.IMAGES[0].imgDescription | markdown"
+                >{{ pSection.IMAGES[0].imgDescription | markdown }}</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- This section is for three images (with and without description) -->
+      <div *ngIf="pSection.sectionType == '3W'">
+        <div class="project-section-three-photos-layed">
+          <!-- Section header will always be there -->
+          <h2>{{ pSection.sectionHeader }}</h2>
+
+          <div class="section-contents">
+            <!-- Section Description may or may not be there -->
+            <div *ngIf="pSection.sectionDescription.length > 1">
+              <div class="description-section">
+                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
+              </div>
+            </div>
+
+            <div class="image-content">
+              <!-- Showing the images in grid format -->
+              <div *ngFor="let imageItem of pSection.IMAGES">
+                <div class="image-section">
+                  <img
+                    src="{{ imageItem.imgLink }}"
+                    (click)="
+                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                    "
+                    alt=""
+                  />
+                  <small
+                    [innerHTML]="imageItem.imgDescription | markdown"
+                  ></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- This section is for two images (without description) -->
+      <div *ngIf="pSection.sectionType == '2W'">
+        <div class="project-section-two-photos-layed-without-description">
+          <!-- Section header will always be there -->
+          <h2>{{ pSection.sectionHeader }}</h2>
+
+          <div class="section-contents">
+            <!-- Section Description may or may not be there -->
+            <div *ngIf="pSection.sectionDescription.length > 1">
+              <div class="description-section">
+                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
+              </div>
+            </div>
+
+            <div class="image-content">
+              <!-- Showing the images in grid format -->
+              <div *ngFor="let imageItem of pSection.IMAGES">
+                <div class="image-section">
+                  <img
+                    src="{{ imageItem.imgLink }}"
+                    (click)="
+                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                    "
+                    alt=""
+                  />
+                  <small
+                    [innerHTML]="imageItem.imgDescription | markdown"
+                  ></small>
+                </div>
               </div>
             </div>
           </div>

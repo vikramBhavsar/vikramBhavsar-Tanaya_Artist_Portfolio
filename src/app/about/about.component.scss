@@ -1,0 +1,17 @@
+.container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 2rem;
+
+    .content{
+        text-align: justify;
+        margin-right: 3rem;
+    }
+
+    .image-side{
+        img{
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+}
