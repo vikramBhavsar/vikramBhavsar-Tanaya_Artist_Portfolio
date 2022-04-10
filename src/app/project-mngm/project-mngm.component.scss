@@ -1,0 +1,19 @@
+main{
+    width: 100%;
+    height: 100%;
+
+    .division{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+
+        .create-project{
+
+            form{
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            margin: 1rem;
+        }
+    }
+}

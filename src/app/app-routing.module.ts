@@ -8,10 +8,14 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { PrjRantsComponent } from './prj-rants/prj-rants.component';
 import { MainAppComponent } from './main-app/main-app.component';
+import { LoginComponent } from './login/login.component';
+import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'project-rants', component: PrjRantsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'projects-mngm', component: ProjectMngmComponent },
   { path: 'T', component:  MainAppComponent , children:[
     {
       path:'gallery/:projectid',
