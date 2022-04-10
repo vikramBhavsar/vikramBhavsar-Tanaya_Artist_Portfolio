@@ -1,0 +1,20 @@
+<main>
+    <div class="division">
+        <div class="project-list">
+
+        </div>
+        <div class="create-project">
+
+            <form [formGroup]="projectCreateForm">
+                <label for="projectHeader">Project Heading</label>
+                <input type="text" id="projectHeader" formControlName="projectHeading">
+                <label for="projectDescrip">What is the project about?</label>
+                <textarea type="text" id="projectDescrip" formControlName="projectDescrip"></textarea>
+    
+                <button type="submit">Create Project</button>
+
+                <p>{{projectCreateForm.value | json }}</p>
+            </form>
+        </div>
+    </div>
+</main>

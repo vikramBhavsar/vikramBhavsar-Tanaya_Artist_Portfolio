@@ -70,6 +70,10 @@
           </div>
         </li>
 
+        <li *ngIf="access.length > 0">
+          <a routerLink="/projects-mngm">My Projects</a>
+        </li>
+
         <li>
           <a routerLink="about">About</a>
         </li>
@@ -106,6 +110,10 @@
 
         <li>
           <a routerLink="contact">Contact</a>
+        </li>
+
+        <li *ngIf="access.length > 0">
+          <a (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

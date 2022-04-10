@@ -12,6 +12,9 @@ export class MainAppComponent implements OnInit {
   // This is for small phone menu
   hamburger: boolean = false;
 
+  // Access token for login and authentication
+  access:string = '';
+
   // **** VARIABLES FOR PROJECT SELECTION SECTION WISE **** //
   curProject: number = 0;
 
@@ -43,6 +46,9 @@ export class MainAppComponent implements OnInit {
 
     // Initializing the project drop down
     this.initializerProjectData();
+
+    // Initializing access token value
+    this.access = localStorage.getItem("access") || '';
   }
 
 
@@ -101,5 +107,12 @@ export class MainAppComponent implements OnInit {
     if (fromPhone) {
       this.TogglePhoneMenu();
     }
+  }
+
+  // **** Function for logging out
+  logout(){
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    this.router.navigate(['']);
   }
 }

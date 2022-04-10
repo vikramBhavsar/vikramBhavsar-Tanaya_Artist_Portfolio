@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +14,9 @@ import { TextFormatterComponent } from './text-formatter/text-formatter.componen
 import { MainAppComponent } from './main-app/main-app.component';
 import { MarkdownPipe } from './pipes/markdown.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptorInterceptor } from './interceptors/jwt-interceptor.interceptor';
+import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     MainAppComponent,
     MarkdownPipe,
     SafeUrlPipe,
+    LoginComponent,
+    ProjectMngmComponent,
     
   ],
   imports: [
@@ -34,7 +40,9 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
