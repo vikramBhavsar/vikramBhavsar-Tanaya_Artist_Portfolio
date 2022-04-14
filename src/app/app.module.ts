@@ -17,6 +17,9 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptorInterceptor } from './interceptors/jwt-interceptor.interceptor';
 import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
+import { DatePipe } from '@angular/common';
+import { SectionMngmComponent } from './section-mngm/section-mngm.component';
+import { SectionUpDelComponent } from './section-up-del/section-up-del.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
     SafeUrlPipe,
     LoginComponent,
     ProjectMngmComponent,
+    SectionMngmComponent,
+    SectionUpDelComponent,
     
   ],
   imports: [
@@ -42,6 +47,7 @@ import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

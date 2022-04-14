@@ -15,7 +15,7 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log("Code between interceptor is executed.");
-
+    console.log(request);
     let access = localStorage.getItem("access");
 
     if(access != null){

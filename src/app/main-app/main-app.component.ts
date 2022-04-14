@@ -22,10 +22,11 @@ export class MainAppComponent implements OnInit {
   allPROJECTS: ServerData = {
     "PROJECTS": [
         {
-          "projectID": "1",
-          "projectHeader": "Fragments",
+          "id": "1",
+          "projectName": "Fragments",
           "projectDescription": "",
-          "SECTIONS":[]
+          "projectDate":"",
+          "sections":[]
         }
     ]
   }
