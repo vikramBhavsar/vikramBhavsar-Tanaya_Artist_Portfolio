@@ -2,7 +2,7 @@
   "PROJECTS": [
     {
       "projectID": "1",
-      "projectHeader": "Fragments",
+      "projectName": "Fragments",
       "projectDescription": "",
 
       "SECTIONS": [
@@ -79,7 +79,7 @@
     },
     {
       "projectID": "2",
-      "projectHeader": "Thought Diaries",
+      "projectName": "Thought Diaries",
       "projectDescription": "Thought Diaries is a series of works which were created post Lockdown 1.0. As disparate works, they are an amalgamation of floating thoughts in the moment, combined with an attempt to understand transitory feelings. My own personal experiences along with objects that I observed in my daily routine have been translated as paintings and sketches/ drawings.",
       "SECTIONS": [
         {
@@ -184,7 +184,7 @@
     },
     {
       "projectID": "4",
-      "projectHeader": "Jal aur Agni",
+      "projectName": "Jal aur Agni",
       "projectDescription": "",
       "SECTIONS": [
         {
@@ -212,7 +212,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Mend",
+      "projectName": "Mend",
       "projectDescription": "To mend would be to bring back to use, even if marks or scars remain: visible or not visible. This act of mending is a mere attempt at putting back a broken piece of cup to the place where it originally belonged; just like a jigsaw puzzle. The rest of the pieces of the cup are lost, left isolated, and the cup remains broken mostly. To use a cup is to drink in it, is to make it contain something. The cracks of the cup, however, make its state of disuse apparent. Is the cup reduced or elevated to an art object? <br> The cup is now part of the Memory Garden.",
       "SECTIONS": [
         {
@@ -234,7 +234,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Utopia",
+      "projectName": "Utopia",
       "projectDescription": "Utopia is a work very personal to me. It was inspired by a photograph taken at the Cubbon Park, Bengaluru. It captures an exact moment, when I felt absolutely ecstatic looking at this particular scene (as in the painting) and exclaimed to my friend, with whom I was visiting, ‘Utopia!’ I translated the shades of green, specifically the bright lemon green, which I fell in love with for the first time, onto a discarded board on which I had previously experimented with. The painting embodies this particular memory along with the many other memories of my visits to Lal Bagh with my mother, as a child. <br> The painting was gifted to a friend. ",
       "SECTIONS": [
         {
@@ -256,7 +256,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Memorabilia",
+      "projectName": "Memorabilia",
       "projectDescription": "Memorabilia contains the little objects and materials that I used to enjoy collecting as a child. The cement pieces capture the associated memories in my mind, while the discarded bits of paper portray the images of my faint memory. The work created was a way through which I could date back my obsessions that I currently have: collecting discards and finding possibilities of using them through my art. <br> The drawings/ paintings on paper have been composted and the cement pieces are now a part of the Memory Garden.",
       "SECTIONS": [
         {
@@ -296,7 +296,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Recipe",
+      "projectName": "Recipe",
       "projectDescription": "I began collecting leftover food from the plates of my classmates in discarded plastic glasses in the dining hall at my university campus during MFA. Simultaneously, a few exchanges with my classmates were jotted down, somehow ‘evidences of my projected guilt’ (probably felt by most as a cultural value one is brought up with in an Indian household). The leftover food was composted in ‘Matkas’, turning this guilt into matter. <br> The exchanges were playful, most of my classmates being aware of my habit of not wanting to waste food. A few of them were: ‘Main apne paapo ka pashchataap kar raha hoon’ (I am undergoing penance for my sins) ‘Idhar ka khana acha nahi hai, isliye zyaada phikta hai’ (The food here is not good and so it gets wasted more) ‘Nimbu, achaar aur hari mirch sabse taken for granted hote hain. Sabse zyaada yehi phikte hain’ (Lemon, pickle and green chillies are most taken for granted and therefore wasted) <br> The works are symbolic of value and the constant intermingling of permanence and impermanence. <br> 15 of 30 works exist. The remaining are now part of the project: Burial.",
       "SECTIONS": [
         {
@@ -390,7 +390,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Tehelka Series",
+      "projectName": "Tehelka Series",
       "projectDescription": "I started using discarded and found materials such as tissue paper, used plastic glasses, foil, left over paint, newspaper, found shells, etc. as metaphors. They translate into a play of form, colour and texture in this series. Having taken printmaking as a subsidiary subject during my BFA, I observed that a lot of PVC ink was wasted during the time. <br> It was the first time where I began treating the ink (or paint) as a *material* and not a *medium*. In addition, the materials began to physically manifest on my works, instead of them being mere tools to create impressions/ textures. The surficial tensions and layers were built through the act of rolling, squeezing, dabbing, pouring, dripping etc (like in the former series: Haze), where in I let the various wasted materials in the studio speak to me. The works symbolize various states of being or in other words existence through different kinds of movements and tensions. ",
       "SECTIONS": [
         {
@@ -430,7 +430,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Blur Series",
+      "projectName": "Blur Series",
       "projectDescription": "These works arose from the need to use worn out tools, which I found in my studio during BFA: a roller that had lost its elasticity to spread paint and a squeegee that had a damaged rubber surface. The act of rolling, squeezing, dabbing, pouring and dripping became significant to me, as they implied that I was doing *something*: the expressionist tendency towards which I leaned, was new to me at the time. <br> The works served as instant intuitive urges, while I worked on multiple canvases at once. Even though I did not have an end image in mind, I observed that subconsciously, the works often resembled *nature*, at the point where I decided to stop painting further. It was probably a way through which I could escape my conscious mind, simultaneously have the satisfaction of *doing something* and attempt to find meaning through the process (atleast try to!).  ",
       "SECTIONS": [
         {
@@ -488,7 +488,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Scatter",
+      "projectName": "Scatter",
       "projectDescription": "",
       "SECTIONS": [
         {
@@ -522,7 +522,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Re-Weave",
+      "projectName": "Re-Weave",
       "projectDescription": "A mundane sofa brought by my paternal grandmother from her native place in the 1950s, became a point of inquiry as I witnessed its repair when the woven strings began to break, loosen and wear out. The work became a response to the above process as I began to question the interwoven aspects of time, loss, remembering and materiality <br> The installation at Serendipity Arts Festival which was dismantled, culminated into this work. The work is the result of a haphazard act of re-weaving paper strips (used during the installation) with words in Hindi: Galna, Gal jaana and Gal Diya Jaana, after I began observing the sofa *carcass* (As I like to call it). <br> Nothing of the installation at the festival remains apart from the sofa carcass and this work which I brought back home. ",
       "SECTIONS": [
         {
@@ -556,7 +556,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Scratch",
+      "projectName": "Scratch",
       "projectDescription": "*The anxiety of having to leave so much behind...* <br> Engrossed with the act of removing tiny fragments of dried pulp stuck on the mesh that I was using to create recycled paper, it seemed as though the dried pulp was mimicking dust particles and cobwebs. Like a window in an abandoned space overlooking outside, the task of removing every fragment from the mesh seemed impossible. But I couldn’t stop! The act of continuous scratching seemed futile, for so many layers still remained stuck on the mesh. The act, almost obsessive like scratching one’s skin; difficult to stop, once the process starts, constantly revealed an intermingling of comfort and discomfort. <br> While I continued to *scratch*, I realised that this act was characterized by the desire to use those miniscule fragments and hence removing them from their state of disuse. A possible way to repurpose them would be to use them as pulp, but to what extent would this loop continue? Was it possible for no particle to remain on the mesh?",
       "SECTIONS": [
         {
@@ -578,7 +578,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "The Forbidden Fruit",
+      "projectName": "The Forbidden Fruit",
       "projectDescription": "",
       "SECTIONS": [
         {
@@ -621,7 +621,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Na Rakhna Hai, Na Phenkna Hai",
+      "projectName": "Na Rakhna Hai, Na Phenkna Hai",
       "projectDescription": "In a state of disuse over a long period of time, I witnessed my maternal grandmother’s utensils lying wasted in her kitchen cupboards. (The age of the utensils ranging from approximately 70-150 years) Their old world charm instantly stood out, as she casually started telling me about their personal significance, use and stories. *Na Rakhna Hai, Na Phenkna Hai* is a remark that Nani made while I conversed with her, which immediately caught my attention and appropriate for the title of this ongoing project. Over a period of time, my position from being solely fascinated with the utensils shifted to them being treated as 'heirlooms', containers of memorabilia and their value surpassing any form of tangibility. ",
       "SECTIONS": [
         {

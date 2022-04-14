@@ -16,19 +16,19 @@
 
   <!-- This div wil contain all the gallery section -->
   <div class="gallery-container">
-    <h1>{{ serverData.PROJECTS[curProject].projectHeader }}</h1>
+    <h1>{{ serverData.PROJECTS[curProject].projectName }}</h1>
     <p
       [innerHTML]="
         serverData.PROJECTS[curProject].projectDescription | markdown
       "
     ></p>
 
-    <div *ngFor="let pSection of serverData.PROJECTS[curProject].SECTIONS">
+    <div *ngFor="let pSection of serverData.PROJECTS[curProject].sections">
       <!-- This section is for MULTIPLE IMAGES -->
-      <div *ngIf="pSection.sectionType == 'MG'">
+      <div *ngIf="pSection.sectionDisplayType == 'MG'">
         <div class="project-section-multiple-photos-layed">
           <!-- Section header will always be there -->
-          <h2>{{ pSection.sectionHeader }}</h2>
+          <h2>{{ pSection.sectionName }}</h2>
 
           <div class="section-contents">
             <!-- Section Description may or may not be there -->
@@ -39,7 +39,7 @@
             </div>
 
             <!-- Showing the images in grid format -->
-            <div *ngFor="let imageItem of pSection.IMAGES">
+            <div *ngFor="let imageItem of pSection.mediaContent">
               <!-- Below code is distinct for IMAGES AND VIDEO TOGER -->
               <div
                 *ngIf="
@@ -52,27 +52,27 @@
                 <div class="video-section">
                   <div class="iframe-container">
                     <iframe
-                      [src]="imageItem.imgLink | safeUrl: 'resourceUrl'"
+                      [src]="imageItem.mediaFile | safeUrl: 'resourceUrl'"
                       frameborder="0"
                       allowfullscreen
                     ></iframe>
                   </div>
                   <small
-                    [innerHTML]="imageItem.imgDescription | markdown"
+                    [innerHTML]="imageItem.mediaDescription | markdown"
                   ></small>
                 </div>
               </ng-template>
               <ng-template #imgBlockMG>
                 <div class="image-section">
                   <img
-                    src="{{ imageItem.imgLink }}"
+                    src="{{ imageItem.mediaFile }}"
                     (click)="
-                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                      openImage(imageItem.mediaFile, imageItem.mediaDescription)
                     "
                     alt=""
                   />
                   <small
-                    [innerHTML]="imageItem.imgDescription | markdown"
+                    [innerHTML]="imageItem.mediaDescription | markdown"
                   ></small>
                 </div>
               </ng-template>
@@ -82,19 +82,19 @@
       </div>
 
       <!-- THis section is for single photo with description -->
-      <div *ngIf="pSection.sectionType == 'SD'">
+      <div *ngIf="pSection.sectionDisplayType == 'SD'">
         <div class="project-section-single-photo">
-          <h2>{{ pSection.sectionHeader }}</h2>
+          <h2>{{ pSection.sectionName }}</h2>
 
           <div class="description-divide">
             <div class="img-overlay">
               <!-- Showing the first image Since SD type section will only have one image -->
               <img
-                src="{{ pSection.IMAGES[0].imgLink }}"
+                src="{{ pSection.mediaContent[0].mediaFile }}"
                 (click)="
                   openImage(
-                    pSection.IMAGES[0].imgLink,
-                    pSection.IMAGES[0].imgDescription
+                    pSection.mediaContent[0].mediaFile,
+                    pSection.mediaContent[0].mediaDescription
                   )
                 "
                 alt=""
@@ -102,8 +102,8 @@
               <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
               <div class="img-description-short">
                 <small
-                  [innerHTML]="pSection.IMAGES[0].imgDescription | markdown"
-                  >{{ pSection.IMAGES[0].imgDescription | markdown }}</small
+                  [innerHTML]="pSection.mediaContent[0].mediaDescription | markdown"
+                  >{{ pSection.mediaContent[0].mediaDescription | markdown }}</small
                 >
               </div>
             </div>
@@ -118,18 +118,18 @@
       </div>
 
       <!-- THis section is for single photo WITHOUT description -->
-      <div *ngIf="pSection.sectionType == 'S'">
+      <div *ngIf="pSection.sectionDisplayType == 'S'">
         <div class="project-section-single-photo-without-description">
-          <h2>{{ pSection.sectionHeader }}</h2>
+          <h2>{{ pSection.sectionName }}</h2>
 
           <div class="img-overlay">
             <!-- Showing the first image Since SD type section will only have one image -->
             <img
-              src="{{ pSection.IMAGES[0].imgLink }}"
+              src="{{ pSection.mediaContent[0].mediaFile }}"
               (click)="
                 openImage(
-                  pSection.IMAGES[0].imgLink,
-                  pSection.IMAGES[0].imgDescription
+                  pSection.mediaContent[0].mediaFile,
+                  pSection.mediaContent[0].mediaDescription
                 )
               "
               alt=""
@@ -137,8 +137,8 @@
             <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
             <div class="img-description-short">
               <small
-                [innerHTML]="pSection.IMAGES[0].imgDescription | markdown"
-                >{{ pSection.IMAGES[0].imgDescription | markdown }}</small
+                [innerHTML]="pSection.mediaContent[0].mediaDescription | markdown"
+                >{{ pSection.mediaContent[0].mediaDescription | markdown }}</small
               >
             </div>
           </div>
@@ -146,10 +146,10 @@
       </div>
 
       <!-- This section is for three images (with and without description) -->
-      <div *ngIf="pSection.sectionType == '3W'">
+      <div *ngIf="pSection.sectionDisplayType== '3W'">
         <div class="project-section-three-photos-layed">
           <!-- Section header will always be there -->
-          <h2>{{ pSection.sectionHeader }}</h2>
+          <h2>{{ pSection.sectionName }}</h2>
 
           <div class="section-contents">
             <!-- Section Description may or may not be there -->
@@ -161,17 +161,17 @@
 
             <div class="image-content">
               <!-- Showing the images in grid format -->
-              <div *ngFor="let imageItem of pSection.IMAGES">
+              <div *ngFor="let imageItem of pSection.mediaContent">
                 <div class="image-section">
                   <img
-                    src="{{ imageItem.imgLink }}"
+                    src="{{ imageItem.mediaFile }}"
                     (click)="
-                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                      openImage(imageItem.mediaFile, imageItem.mediaDescription)
                     "
                     alt=""
                   />
                   <small
-                    [innerHTML]="imageItem.imgDescription | markdown"
+                    [innerHTML]="imageItem.mediaDescription | markdown"
                   ></small>
                 </div>
               </div>
@@ -181,10 +181,10 @@
       </div>
 
       <!-- This section is for two images (without description) -->
-      <div *ngIf="pSection.sectionType == '2W'">
+      <div *ngIf="pSection.sectionDisplayType == '2W'">
         <div class="project-section-two-photos-layed-without-description">
           <!-- Section header will always be there -->
-          <h2>{{ pSection.sectionHeader }}</h2>
+          <h2>{{ pSection.sectionName }}</h2>
 
           <div class="section-contents">
             <!-- Section Description may or may not be there -->
@@ -196,17 +196,17 @@
 
             <div class="image-content">
               <!-- Showing the images in grid format -->
-              <div *ngFor="let imageItem of pSection.IMAGES">
+              <div *ngFor="let imageItem of pSection.mediaContent">
                 <div class="image-section">
                   <img
-                    src="{{ imageItem.imgLink }}"
+                    src="{{ imageItem.mediaFile }}"
                     (click)="
-                      openImage(imageItem.imgLink, imageItem.imgDescription)
+                      openImage(imageItem.mediaFile, imageItem.mediaDescription)
                     "
                     alt=""
                   />
                   <small
-                    [innerHTML]="imageItem.imgDescription | markdown"
+                    [innerHTML]="imageItem.mediaDescription | markdown"
                   ></small>
                 </div>
               </div>

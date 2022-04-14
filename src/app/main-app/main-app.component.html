@@ -35,7 +35,7 @@
                 <a
                   (click)="switchProject(idx,true)"
                   [ngClass]="{ active: idx == curProject }"
-                  >{{ proj.projectHeader }}</a
+                  >{{ proj.projectName }}</a
                 >
               </li>
             </ul>
@@ -90,7 +90,7 @@
                   (click)="switchProject(idx)"
                   [routerLink]="['gallery', idx]"
                   [ngClass]="{ active: idx == curProject }"
-                  >{{ proj.projectHeader }}</a
+                  >{{ proj.projectName }}</a
                 >
               </li>
             </ul>

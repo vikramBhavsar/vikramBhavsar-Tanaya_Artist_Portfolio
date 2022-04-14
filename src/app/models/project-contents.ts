@@ -5,12 +5,12 @@ export interface ServerData{
 
 export interface ProjectGLRY{
     // Project part of the model
-    projectID:string;
-    projectHeader:string;
+    id:string;
+    projectName:string;
     projectDescription:string;
-
+    projectDate:string;
     // for list of sections
-    SECTIONS:SectionGLRY[];
+    sections:SectionGLRY[];
 
 
     // ***** DIFFERENT TYPES OF SECTIONS ***** //
@@ -25,21 +25,43 @@ export interface ProjectGLRY{
 
 export interface SectionGLRY{
     // section part of the model
-    sectionID:string;
-    sectionType:string;
-    sectionProjectID:string;
-    sectionHeader:string;
+    id:string;
+    sectionDisplayType:string;
+    projectID:string;
+    sectionDate:string;
+    sectionName:string;
     sectionDescription:string;
 
     // for list of images
-    IMAGES: ImagesGLRY[]
+    mediaContent: ImagesGLRY[]
 }
 
 
 export interface ImagesGLRY{
     // Image part of the model
-    imgId:string;
-    imgLink:string;
+    id:string;
+    mediaFile:string;
     isVideo:string;
-    imgDescription:string;
+    mediaDescription:string;
+    mediaDate:string;
+    videoUrl:string;
+    sectionID:string;
+}
+
+
+//  *** individual Project model for creating objetcs
+export interface ProjectModel{
+    id:string;
+    projectName:string;
+    projectDescription:string;
+    projectDate:string;
+
+}
+
+export interface SectionModel{
+    id:string;
+    sectionName:string;
+    sectionDescription:string;
+    sectionDate:string;
+    projectID:string;
 }

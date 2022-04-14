@@ -2,7 +2,7 @@
   "PROJECTS": [
     {
       "projectID": "1",
-      "projectHeader": "Fragments",
+      "projectName": "Fragments",
       "projectDescription": "",
 
       "SECTIONS": [
@@ -71,7 +71,7 @@
     },
     {
       "projectID": "2",
-      "projectHeader": "Thought Diaries",
+      "projectName": "Thought Diaries",
       "projectDescription": "Thought Diaries is a series of works which were created post Lockdown 1.0. As disparate works, they are an amalgamation of floating thoughts in the moment, combined with an attempt to understand transitory feelings. My own personal experiences along with objects that I observed in my daily routine have been translated as paintings and sketches/ drawings.",
       "SECTIONS": [
         {
@@ -173,7 +173,7 @@
     },
     {
       "projectID": "3",
-      "projectHeader": "Roller Paintings",
+      "projectName": "Roller Paintings",
       "projectDescription": "These works arose from the need to use worn out tools, which I found in my studio during BFA: a roller that had lost its elasticity to spread paint and a squeegee that had a damaged rubber surface. The act of rolling, squeezing, dabbing, pouring and dripping became significant to me, as they implied that I was doing something: the expressionist tendency towards which I leaned, was new to me at the time. &nbsp;      The works served as instant intuitive urges, while I worked on multiple canvases at once. Even though I did not have an end image in mind, I observed that subconsciously, the works often resembled nature, at the point where I decided to stop painting further. It was probably a way through which I could escape my conscious mind, simultaneously have the satisfaction of doing something and attempt to find meaning through the process (atleast try to!). &nbsp; None of the paintings in the series exist anymore (apart from Haze). They were reused/ recycled as other works.",
       "SECTIONS": [
         {
@@ -225,7 +225,7 @@
     },
     {
       "projectID": "4",
-      "projectHeader": "Jal aur Agni",
+      "projectName": "Jal aur Agni",
       "projectDescription": "",
       "SECTIONS": [
         {
@@ -251,7 +251,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Mend",
+      "projectName": "Mend",
       "projectDescription": "To mend would be to bring back to use, even if marks or scars remain: visible or not visible. This act of mending is a mere attempt at putting back a broken piece of cup to the place where it originally belonged; just like a jigsaw puzzle. The rest of the pieces of the cup are lost, left isolated, and the cup remains broken mostly. To use a cup is to drink in it, is to make it contain something. The cracks of the cup, however, make its state of disuse apparent. Is the cup reduced or elevated to an art object? <br> The cup is now part of the Memory Garden.",
       "SECTIONS": [
         {
@@ -272,7 +272,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Utopia",
+      "projectName": "Utopia",
       "projectDescription": "Utopia is a work very personal to me. It was inspired by a photograph taken at the Cubbon Park, Bengaluru. It captures an exact moment, when I felt absolutely ecstatic looking at this particular scene (as in the painting) and exclaimed to my friend, with whom I was visiting, ‘Utopia!’ I translated the shades of green, specifically the bright lemon green, which I fell in love with for the first time, onto a discarded board on which I had previously experimented with. The painting embodies this particular memory along with the many other memories of my visits to Lal Bagh with my mother, as a child. <br> The painting was gifted to a friend. ",
       "SECTIONS": [
         {
@@ -293,7 +293,7 @@
     },
     {
       "projectID": "5",
-      "projectHeader": "Memorabilia",
+      "projectName": "Memorabilia",
       "projectDescription": "Memorabilia contains the little objects and materials that I used to enjoy collecting as a child. The cement pieces capture the associated memories in my mind, while the discarded bits of paper portray the images of my faint memory. The work created was a way through which I could date back my obsessions that I currently have: collecting discards and finding possibilities of using them through my art. <br> The drawings/ paintings on paper have been composted and the cement pieces are now a part of the Memory Garden.",
       "SECTIONS": [
         {
