@@ -144,6 +144,37 @@ $secondary-color: #fec5bb;
         display: grid;
         grid-template-columns: 70% 30%;
 
+        .video-overlay{
+          padding: 0.5rem;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          display: grid;
+          grid-template-columns: 1fr;
+
+          
+          .iframe-container{
+            padding-top: 30px;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 56.25%;
+          }
+
+          iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+
+          .video-description-short{
+            text-align: center;
+            padding: 1rem;
+          }
+        }
+
         .img-overlay {
           padding: 0.5rem;
           width: 100%;
@@ -193,8 +224,8 @@ $secondary-color: #fec5bb;
 
       .img-overlay {
         padding: 0.5rem;
-        width: 100%;
-        height: 100%;
+        width: 70%;
+        height: 70%;
         box-sizing: border-box;
 
         img {

@@ -20,6 +20,7 @@ import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
 import { DatePipe } from '@angular/common';
 import { SectionMngmComponent } from './section-mngm/section-mngm.component';
 import { SectionUpDelComponent } from './section-up-del/section-up-del.component';
+import { ArtEducationComponent } from './art-education/art-education.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SectionUpDelComponent } from './section-up-del/section-up-del.component
     ProjectMngmComponent,
     SectionMngmComponent,
     SectionUpDelComponent,
+    ArtEducationComponent,  
     
   ],
   imports: [

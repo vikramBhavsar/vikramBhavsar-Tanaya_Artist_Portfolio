@@ -16,14 +16,14 @@
 
   <!-- This div wil contain all the gallery section -->
   <div class="gallery-container">
-    <h1>{{ serverData.PROJECTS[curProject].projectName }}</h1>
+    <h1>{{ projectGLRY.projectName }}</h1>
     <p
       [innerHTML]="
-        serverData.PROJECTS[curProject].projectDescription | markdown
+      projectGLRY.projectDescription | markdown
       "
     ></p>
 
-    <div *ngFor="let pSection of serverData.PROJECTS[curProject].sections">
+    <div *ngFor="let pSection of projectGLRY.sections">
       <!-- This section is for MULTIPLE IMAGES -->
       <div *ngIf="pSection.sectionDisplayType == 'MG'">
         <div class="project-section-multiple-photos-layed">
@@ -43,16 +43,16 @@
               <!-- Below code is distinct for IMAGES AND VIDEO TOGER -->
               <div
                 *ngIf="
-                  imageItem.isVideo == 'y';
+                  imageItem.isVideo;
                   then videoBlockMG;
                   else imgBlockMG
                 "
               ></div>
               <ng-template #videoBlockMG>
                 <div class="video-section">
-                  <div class="iframe-container">
+                  <div class="iframe-container">  
                     <iframe
-                      [src]="imageItem.mediaFile | safeUrl: 'resourceUrl'"
+                      [src]="imageItem.videoUrl | safeUrl: 'resourceUrl'"
                       frameborder="0"
                       allowfullscreen
                     ></iframe>
@@ -87,7 +87,27 @@
           <h2>{{ pSection.sectionName }}</h2>
 
           <div class="description-divide">
-            <div class="img-overlay">
+
+            <div class="video-overlay" *ngIf="pSection.mediaContent[0].isVideo">
+
+              <div class="iframe-container">
+                <iframe
+                [src]="pSection.mediaContent[0].videoUrl | safeUrl: 'resourceUrl'"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+              </div>
+
+            <div class="video-description-short">
+              <small
+                [innerHTML]="pSection.mediaContent[0].mediaDescription | markdown"
+                >{{ pSection.mediaContent[0].mediaDescription | markdown }}</small
+              >
+            </div>
+            </div>
+
+
+            <div class="img-overlay" *ngIf="!pSection.mediaContent[0].isVideo">
               <!-- Showing the first image Since SD type section will only have one image -->
               <img
                 src="{{ pSection.mediaContent[0].mediaFile }}"

@@ -29,12 +29,17 @@ export class ManagementService {
 
 
   getDetailsOfProject(projectID:string):Observable<ProjectGLRY>{
-    return this.http.get<ProjectGLRY>(this.managementURL+`project/${projectID}`);
+    return this.http.get<ProjectGLRY>(this.managementURL+`get-projects/${projectID}`);
   }
 
 
   postSectionData(sectionModel:SectionModel):Observable<any>{
     return this.http.post(this.managementURL+'section',JSON.stringify(sectionModel),this.httpOptions);
+  }
+
+
+  deleteProject(projectID:string):Observable<any>{
+    return this.http.delete(this.managementURL + `project/${projectID}`,this.httpOptions);
   }
 
 
@@ -55,5 +60,9 @@ export class ManagementService {
 
   deleteSectionDetails(sectionID:string):Observable<any>{
     return this.http.delete(this.managementURL + `section/${sectionID}`,this.httpOptions);
+  }
+
+  deleteMediaDetails(mediaID:string):Observable<any>{
+    return this.http.delete(this.managementURL + `media/${mediaID}`,this.httpOptions);
   }
 }

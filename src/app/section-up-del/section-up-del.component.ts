@@ -16,7 +16,6 @@ export class SectionUpDelComponent implements OnInit {
   sectionCreateForm = new FormGroup({
     sectionName: new FormControl('', Validators.required),
     sectionDescription: new FormControl(''),
-    sectionDate: new FormControl(''),
   });
 
 
@@ -57,7 +56,6 @@ export class SectionUpDelComponent implements OnInit {
     sectionName:'',
     id:'',
     sectionDescription:'',
-    sectionDate:'',
     projectID:''
     };
   
@@ -74,7 +72,6 @@ export class SectionUpDelComponent implements OnInit {
           // ** setting the form value programmatically.
           that.sectionCreateForm.controls['sectionName'].setValue(that.sectionDetails.sectionName);
           that.sectionCreateForm.controls['sectionDescription'].setValue(that.sectionDetails.sectionDescription);
-          that.sectionCreateForm.controls['sectionDate'].setValue(that.sectionDetails.sectionDate);
 
         },
         error(msg){
@@ -95,16 +92,13 @@ export class SectionUpDelComponent implements OnInit {
     if(this.editable){
       this.sectionCreateForm.controls['sectionName'].enable();
       this.sectionCreateForm.controls['sectionDescription'].enable();
-      this.sectionCreateForm.controls['sectionDate'].enable();
     }else{
       this.sectionCreateForm.controls['sectionName'].disable();
       this.sectionCreateForm.controls['sectionDescription'].disable();
-      this.sectionCreateForm.controls['sectionDate'].disable();
 
       // ** Setting default values back to the form
       this.sectionCreateForm.controls['sectionName'].setValue(this.sectionDetails.sectionName);
       this.sectionCreateForm.controls['sectionDescription'].setValue(this.sectionDetails.sectionDescription);
-      this.sectionCreateForm.controls['sectionDate'].setValue(this.sectionDetails.sectionDate);
     }
   }
 
@@ -119,7 +113,6 @@ export class SectionUpDelComponent implements OnInit {
 
     let updateSection:SectionModel = {
       id:this.sectionDetails.id,
-      sectionDate:this.sectionCreateForm.controls['sectionDate'].value,
       sectionName:this.sectionCreateForm.controls['sectionName'].value,
       sectionDescription:this.sectionCreateForm.controls['sectionDescription'].value,
       projectID:this.sectionDetails.projectID
