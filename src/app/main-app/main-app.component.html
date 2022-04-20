@@ -30,11 +30,12 @@
           <ng-template #phoneGalleryBlock>
             <h3>Gallery</h3>
 
-            <ul *ngFor="let proj of allPROJECTS.PROJECTS; index as idx">
+            <ul *ngFor="let proj of projectList">
               <li>
                 <a
-                  (click)="switchProject(idx,true)"
-                  [ngClass]="{ active: idx == curProject }"
+                  (click)="switchProject(proj.id,true)"
+                  [routerLink]="['gallery', proj.id]"
+                  [ngClass]="{ active: proj.id == curProject }"
                   >{{ proj.projectName }}</a
                 >
               </li>
@@ -84,24 +85,44 @@
           <ng-template #galleryBlock>
             <h3>Gallery</h3>
 
-            <ul *ngFor="let proj of allPROJECTS.PROJECTS; index as idx">
+            <ul *ngFor="let proj of projectList">
               <li>
                 <a
-                  (click)="switchProject(idx)"
-                  [routerLink]="['gallery', idx]"
-                  [ngClass]="{ active: idx == curProject }"
+                  (click)="switchProject(proj.id)"
+                  [routerLink]="['gallery', proj.id]"
+                  [ngClass]="{ active: proj.id == curProject }"
                   >{{ proj.projectName }}</a
                 >
               </li>
             </ul>
           </ng-template>
           <ng-template #nonGalleryBlock>
-            <a [routerLink]="['/T/gallery','0']">Gallery</a>
+            <a [routerLink]="['/T/gallery',projectList[0].id]">Gallery</a>
           </ng-template>
         </li>
 
         <li>
-          <a routerLink="art-education">Art Education</a>
+
+          <div
+          *ngIf="artEducationActive; then ArtProjectBlock; else nonArtProjectBlock"
+        ></div>
+        <ng-template #ArtProjectBlock>
+          <h3>Art Education</h3>
+
+          <ul *ngFor="let artProj of artProjectList">
+            <li>
+              <a
+                (click)="switchArtProject(artProj.id)"
+                [routerLink]="['/T/art-education', artProj.id]"
+                [ngClass]="{ active: artProj.id == curArtproject }"
+                >{{ artProj.projectName }}</a
+              >
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template #nonArtProjectBlock>
+          <a [routerLink]="['/T/art-education',artProjectList[0].id]">Art Education</a>
+        </ng-template>
         </li>
 
         <li>

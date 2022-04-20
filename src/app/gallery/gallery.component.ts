@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GalleryDataService } from '../services/gallery-data.service';
-import { ServerData } from '../models/project-contents';
+import { ProjectGLRY, ServerData } from '../models/project-contents';
 
 import {
   ActivatedRoute,
   NavigationEnd,
   Router,
 } from '@angular/router';
-
+import { GalleryProjectIDService } from '../services/gallery-project-id.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -21,15 +22,11 @@ export class GalleryComponent implements OnInit {
   constructor(
     private galleryService: GalleryDataService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ProjectIDService:GalleryProjectIDService
   ) {}
 
   currentImg: number = 0;
-
-  // *** FOR ONE MULTIPLE IMAGES SECTION
-  @ViewChild('img_carousel') img_carousel!: ElementRef;
-  @ViewChild('one_image') one_image!: ElementRef;
-  @ViewChild('img_gallery') img_gallery!: ElementRef;
 
   // **** VIEW CHILD USED FOR IMAGE MODAL
   @ViewChild('imgModal') imgModal!: ElementRef;
@@ -39,119 +36,85 @@ export class GalleryComponent implements OnInit {
   curImgStatus: string = 'some wonderful text';
 
   // **** VARIABLES FOR PROJECT SELECTION SECTION WISE **** //
-  curProject: number = 0;
+  curProject: string = '';
 
-  serverData: ServerData = {
-    "PROJECTS": [
-        {
-          "id": "1",
-          "projectName": "Fragments",
-          "projectDescription": "",
-          "projectDate":"",
-          "sections":[],
-        }
-    ]
+  projectGLRY :ProjectGLRY = {
+    "id": "1",
+    "projectName": "Fragments",
+    "projectDescription": "",
+    "sections":[],
+  }
+
+  public ngOnDestroy():void{
+
   }
 
   ngOnInit(): void {
-    // *** getting the Project ID from the route parameter
 
-    this.initializeRouterForProjectChange();
-    this.initializerGalleryData();
+    // Setting the service for project ID subscription
+    this.ProjectIDService.getMessage().subscribe(msg =>{
+      this.curProject = msg;
+      this.initializerGalleryData();
+    })
   }
 
   // for affecting view child
   ngAfterViewInit(): void {
-    // calling this function to set the image size properly on load.
-    this.setImageSizeForMultipleImageSection();
   }
 
-  initializeRouterForProjectChange() {
+  // initializeRouterForProjectChange() {
 
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        let routeParams = this.route.snapshot.paramMap;
-        let projectIDFromRoute = Number(routeParams.get('projectid'));
-        this.curProject = projectIDFromRoute;
-      }
-    });
-  }
+  //   this.router.events.subscribe((val) => {
+  //     if (val instanceof NavigationEnd) {
+  //       let routeParams = this.route.snapshot.paramMap;
+  //       let projectIDFromRoute = routeParams.get('projectid');
+  //       alert("This is from inside of gallery component;");
+  //       alert(`Current Project ID: ${this.curProject}`);
+  //       this.curProject = projectIDFromRoute || '';
+  //     }
+  //   });
+  // }
 
   initializerGalleryData() {
-    this.galleryService.getGalleryData().subscribe((res) => {
-      this.serverData = this.processResultsForLayout(res);
-      this.serverData = res;
-      console.log(this.serverData.PROJECTS);
+    
+    this.galleryService.getGalleryData(this.curProject.toString()).subscribe((res) => {
+      this.projectGLRY = this.processResultsForLayout(res);
+      console.log(res);
+      console.log("Below is Server Data received: ");
+      console.log(this.projectGLRY);
     });
   }
-
-  // **** SETTING THE IMAGE FOR MULTIPLE IMAGE SECTION FUNCTION
-  setImageSizeForMultipleImageSection() {
-    this.img_carousel.nativeElement.style.width = '100%';
-    let imgValue = this.img_carousel.nativeElement.clientWidth;
-    let allImgChildren = this.img_carousel.nativeElement.children;
-    console.log('changing the value to ', imgValue);
-
-    this.img_gallery.nativeElement.style.width = `${imgValue}px`;
-
-    for (const imgItem of allImgChildren) {
-      imgItem.style.width = `${imgValue}px`;
-      imgItem.firstElementChild.style.width = `${imgValue}px`;
-    }
-  }
-
-
 
 
   // **** THis function will process the data and put proper layout for content
-  processResultsForLayout(resultsData: ServerData): ServerData{
+  processResultsForLayout(resultsData: ProjectGLRY): ProjectGLRY{
 
-    
+    ///
+    // This function should check for following
+        // ***** DIFFERENT TYPES OF SECTIONS ***** //
+    // (MG) -- multiple gallery contents
+    // (SD) -- Single image with description
+    // (S) -- Single Image with no description (currently looks okay)
+    // (MC) -- Multiple image with Carousal
+    // (MC) -- multiple image with carousal description
+    // (3W) -- Three images without description
+    // (2W) -- Two images without description
+    ///
 
-
+    for(var i = 0; i < resultsData.sections.length; i++){
+      if(resultsData.sections[i].mediaContent.length > 2){
+        resultsData.sections[i].sectionDisplayType = 'MG';
+      }else if(resultsData.sections[i].mediaContent.length  == 1 && resultsData.sections[i].sectionDescription.length == 0){
+        resultsData.sections[i].sectionDisplayType = 'S';
+      }else if(resultsData.sections[i].mediaContent.length  == 1 && resultsData.sections[i].sectionDescription.length > 1){
+        resultsData.sections[i].sectionDisplayType = 'SD';
+      }else{
+        resultsData.sections[i].sectionDisplayType = 'MG';
+      }
+    }
     return resultsData;
   } 
 
-  // **** TURNING THE IMAGES ON RIGHT SIDE.
-  next() {
-    this.currentImg += 1;
-    // let trnsformXVal = 30;
-    let trnsformXVal = this.one_image.nativeElement.clientWidth;
-    // alert(trnsformXVal);
-
-    let childCount = this.img_carousel.nativeElement.childElementCount;
-
-    if (this.currentImg > childCount - 1) {
-      this.currentImg = 0;
-    }
-
-    this.img_carousel.nativeElement.style.transform = `translateX(-${
-      this.currentImg * trnsformXVal
-    }px)`;
-
-    // alert("Button was clicked");
-    console.log('Button was clicked');
-    console.log(this.img_carousel.nativeElement.clientWidth);
-  }
-
-  // *** TURN THE IMAGES ON LEFT SIDE
-  prev() {
-    this.currentImg -= 1;
-    let trnsformXVal = 30;
-
-    let childCount = this.img_carousel.nativeElement.childElementCount;
-
-    if (this.currentImg < 0) {
-      this.currentImg = childCount - 1;
-    }
-
-    this.img_carousel.nativeElement.style.transform = `translateX(-${
-      this.currentImg * trnsformXVal
-    }rem)`;
-
-    // alert("Button was clicked");
-    console.log('Button was clicked');
-  }
 
   // Function to open image
   openImage(imgUrl: string, imgDetails: string) {

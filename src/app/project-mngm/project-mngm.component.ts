@@ -14,7 +14,6 @@ export class ProjectMngmComponent implements OnInit {
   projectCreateForm = new FormGroup({
     projectName: new FormControl('', Validators.required),
     projectDescrip: new FormControl(''),
-    projectDate: new FormControl(''),
   });
 
   //  Project model list for angukar
@@ -22,7 +21,6 @@ export class ProjectMngmComponent implements OnInit {
 
   constructor(
     private mgntService: ManagementService,
-    private datepipe: DatePipe,
     private router:Router
   ) {}
 
@@ -45,7 +43,6 @@ export class ProjectMngmComponent implements OnInit {
           {
             id: '',
             projectName: '',
-            projectDate: '',
             projectDescription: '',
           },
         ];
@@ -56,43 +53,33 @@ export class ProjectMngmComponent implements OnInit {
 
   createProject() {
 
-    // *** Error handling for date.
-    let choosenDate: string = '';
-    if (this.projectCreateForm.controls['projectDate'].value.length > 0) {
-      try {
-        choosenDate =
-          this.datepipe.transform(
-            new Date(this.projectCreateForm.controls['projectDate'].value),
-            'YYYY-MM-dd'
-          ) || '';
-      } catch (error) {
-        choosenDate = '';
-      }
-    }
-    console.log(`The choosen date is ${choosenDate}`);
-
     let projectInstance: ProjectModel = {
       id: '',
       projectName: this.projectCreateForm.controls['projectName'].value,
       projectDescription:
         this.projectCreateForm.controls['projectDescrip'].value,
-      projectDate: choosenDate,
     };
+
+    let that = this;
 
     this.mgntService.postProjectData(projectInstance).subscribe({
       next(response) {
         console.log(response);
+        that.getProjectList();
       },
       error(msg) {
-        console.log(msg);
+        alert(`Error Occured: ${msg.status} : ${msg.details}`);
       },
     });
   }
 
+  // ** go back to main home page.
+  goToMain(){
+    this.router.navigate(['/T']);
+  }
 
   // ** go to project
   goToProjectManagment(pid:string){
-    alert(pid);
     this.router.navigate(['/sectiom-mngm',pid]);
   }
 }

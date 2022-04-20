@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GalleryDataService } from '../services/gallery-data.service';
-import { ServerData } from '../models/project-contents';
+import { ProjectModel, ServerData } from '../models/project-contents';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { GalleryComponent } from '../gallery/gallery.component';
+import { GalleryProjectIDService } from '../services/gallery-project-id.service';
+import { ArtEducationService } from '../services/art-education.service';
+import { ArtProjects } from '../models/art-education';
 
 @Component({
   selector: 'app-main-app',
@@ -16,21 +20,27 @@ export class MainAppComponent implements OnInit {
   access:string = '';
 
   // **** VARIABLES FOR PROJECT SELECTION SECTION WISE **** //
-  curProject: number = 0;
+  curProject: string = '';
 
-  // **** This is project list data which is gathered from child component - gallery
-  allPROJECTS: ServerData = {
-    "PROJECTS": [
-        {
-          "id": "1",
-          "projectName": "Fragments",
-          "projectDescription": "",
-          "projectDate":"",
-          "sections":[]
-        }
-    ]
-  }
+  // **** Variables for Art Project Selection
+  curArtproject:string = '';
+
+  projectList: ProjectModel[] = [{
+    "id": "1",
+    "projectName": "Fragments",
+    "projectDescription": "",
+  }]
+
+
+  artProjectList:ArtProjects[]=[{
+    "id": "1",
+    "projectName": "NGMA",
+    "projectDescription": "",
+  }]
+
+  // Used to identify which child component is active right now
   galleryActive:boolean = false;
+  artEducationActive:boolean = false;
 
   // ********************* DECLARING ALL THE VIEWCHILD BELOW *********************
   // **** VIEW CHILD FOR ACCESSING HAMBURGER MENU.
@@ -38,7 +48,9 @@ export class MainAppComponent implements OnInit {
 
   constructor(private galleryService: GalleryDataService,
               private router : Router,
-              private route : ActivatedRoute) {}
+              private route : ActivatedRoute,
+              private ProjectIDService:GalleryProjectIDService,
+              private artEducation:ArtEducationService) {}
 
   ngOnInit(): void {
 
@@ -47,6 +59,9 @@ export class MainAppComponent implements OnInit {
 
     // Initializing the project drop down
     this.initializerProjectData();
+
+    // Initialize project drop down for art education
+    this.initializeArtEducationData();
 
     // Initializing access token value
     this.access = localStorage.getItem("access") || '';
@@ -58,8 +73,17 @@ export class MainAppComponent implements OnInit {
 
     // This is used for first instance.
     let initialPageLoadLink = window.location.href;
+
+    // checking for gallery page
     if(initialPageLoadLink.includes("/T/gallery/")){
       this.galleryActive = true;
+    }
+
+
+
+    // checking for Art Education Page.
+    if(initialPageLoadLink.includes("/T/art-education/")){
+      this.artEducationActive = true;
     }
 
 
@@ -72,6 +96,29 @@ export class MainAppComponent implements OnInit {
         }else{
           this.galleryActive = false;
         }
+
+        // *** checking if Art Education is started or not
+        if(val.urlAfterRedirects.startsWith("/T/art-education/")){
+          this.artEducationActive = true;
+        }else{
+          this.artEducationActive = false;
+        }
+      }
+    })
+  }
+
+
+  // *** Function to initialize art projects list
+  initializeArtEducationData(){
+
+    let that = this;
+    this.artEducation.getArtEducationProject().subscribe({
+      next(res){
+        that.artProjectList = res;
+        that.ProjectIDService.updateArtMessage(that.artProjectList[0].id);
+      },
+      error(msg){
+        alert(`Error getting Projects: ${msg.status} : ${msg.details}`);
       }
     })
   }
@@ -79,7 +126,10 @@ export class MainAppComponent implements OnInit {
   // **** FUNCTION for initializing project list
   initializerProjectData(){
     this.galleryService.getProjectList().subscribe(res =>{
-      this.allPROJECTS = res;
+      this.projectList = res;
+
+      // set the data for first project
+      this.ProjectIDService.updateMessage(this.projectList[0].id);
     });
   }
 
@@ -93,15 +143,30 @@ export class MainAppComponent implements OnInit {
   }
 
   // FUNCTION to select and change current project
-  switchProject(selectedProjID: number, fromPhone: boolean = false) {
+  switchProject(selectedProjID: string, fromPhone: boolean = false) {
     // ************** INFORM THE CHILD OF THE CUR PROJECT SELECTED.
     this.curProject = selectedProjID
+    this.ProjectIDService.updateMessage(this.curProject);
 
     // Closing the menu directly when selecting project from Side bar
     if (fromPhone) {
       this.TogglePhoneMenu();
     }
   }
+
+
+
+  switchArtProject(selectedProjID:string, fromPhone:boolean = false){
+    // ************** INFORM THE CHILD OF THE CUR PROJECT SELECTED.
+    this.curArtproject = selectedProjID
+    this.ProjectIDService.updateArtMessage(this.curArtproject);
+
+    // Closing the menu directly when selecting project from Side bar
+    if (fromPhone) {
+      this.TogglePhoneMenu();
+    }
+  }
+
 
   // **** FUNCTION to close the tab when going to other child components.
   switchChild(fromPhone: boolean = false){

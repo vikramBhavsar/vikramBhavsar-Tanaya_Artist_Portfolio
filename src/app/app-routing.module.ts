@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ProjectMngmComponent } from './project-mngm/project-mngm.component';
 import { SectionMngmComponent } from './section-mngm/section-mngm.component';
 import { SectionUpDelComponent } from './section-up-del/section-up-del.component';
+import { ArtEducationComponent } from './art-education/art-education.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
       path:'contact',
       component:  ContactComponent
+    },
+    {
+      path:'art-education/:artprojectid',
+      component:  ArtEducationComponent
     }
   ]},
   

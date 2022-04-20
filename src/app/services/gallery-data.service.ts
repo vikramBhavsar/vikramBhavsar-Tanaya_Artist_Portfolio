@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ProjectGLRY, ProjectModel, ServerData } from '../models/project-contents';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GalleryDataService {
+
+  dataLink:string = 'http://127.0.0.1:8000/api/';
+
+
   home_URLS_list!: string[];
   project_URLS_list!: string[];
 
@@ -24,11 +29,11 @@ export class GalleryDataService {
     return listOfProjectURLs;
   }
 
-  getGalleryData(): Observable<any> {
-    return this.httpClient.get('assets/data.json');
+  getGalleryData(projectID:string): Observable<ProjectGLRY> {
+    return this.httpClient.get<ProjectGLRY>(this.dataLink + `single-project/${projectID}`);
   }
 
-  getProjectList(): Observable<any> {
-    return this.httpClient.get('assets/projects.json');
+  getProjectList():Observable<ProjectModel[]>{
+    return this.httpClient.get<ProjectModel[]>(this.dataLink + 'project-list');
   }
 }

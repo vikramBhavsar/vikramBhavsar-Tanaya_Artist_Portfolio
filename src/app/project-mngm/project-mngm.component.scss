@@ -2,7 +2,25 @@ $primary-color: #f8efe6;
 $primary-dark: #333;
 $secondary-color: #fec5bb;
 
+.goToMainPage{
+    letter-spacing: 2px;
+    padding: 1rem;
+    font-weight: normal;
+    font-size: 2rem;
+    background: $secondary-color;
+
+    a{
+    cursor: pointer;
+        background: transparent;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
+
 main{
+
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
     margin: 1rem;
@@ -58,6 +76,7 @@ main{
 
         .create-project{
             width: 80%;
+            max-width: 30rem;
 
             form{
                 display: grid;

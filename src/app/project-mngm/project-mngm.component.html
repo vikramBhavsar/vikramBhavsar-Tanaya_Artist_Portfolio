@@ -1,3 +1,7 @@
+<div class="goToMainPage">
+    <a (click)="goToMain()">Go Back To Home</a>
+</div>
+
 <main>
     <h2>Manage Your Projects here:</h2>
     <div class="division">
@@ -19,10 +23,6 @@
 
                 <label for="projectDescrip">What is the project about?</label>
                 <textarea type="text" id="projectDescrip" rows="6" formControlName="projectDescrip"></textarea>
-
-                <label for="projectDate">Project Date</label>
-                <small><em>If no date is provided then today's date is taken</em></small>
-                <input type="date" id="projectDate" formControlName="projectDate">
     
                 <button type="submit" [disabled]="!projectCreateForm.valid">Create Project</button>
 

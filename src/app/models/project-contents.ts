@@ -8,7 +8,6 @@ export interface ProjectGLRY{
     id:string;
     projectName:string;
     projectDescription:string;
-    projectDate:string;
     // for list of sections
     sections:SectionGLRY[];
 
@@ -28,7 +27,6 @@ export interface SectionGLRY{
     id:string;
     sectionDisplayType:string;
     projectID:string;
-    sectionDate:string;
     sectionName:string;
     sectionDescription:string;
 
@@ -43,7 +41,6 @@ export interface ImagesGLRY{
     mediaFile:string;
     isVideo:string;
     mediaDescription:string;
-    mediaDate:string;
     videoUrl:string;
     sectionID:string;
 }
@@ -54,14 +51,11 @@ export interface ProjectModel{
     id:string;
     projectName:string;
     projectDescription:string;
-    projectDate:string;
-
 }
 
 export interface SectionModel{
     id:string;
     sectionName:string;
     sectionDescription:string;
-    sectionDate:string;
     projectID:string;
 }
