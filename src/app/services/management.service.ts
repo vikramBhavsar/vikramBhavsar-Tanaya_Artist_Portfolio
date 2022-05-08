@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProjectGLRY, ProjectModel, SectionGLRY, SectionModel } from '../models/project-contents';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ManagementService {
     })
   };
 
-  managementURL:string = 'http://127.0.0.1:8000/api/';
+  managementURL:string = environment.baseServerURL;
 
   constructor(private http: HttpClient) { }
 

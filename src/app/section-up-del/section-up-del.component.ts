@@ -120,7 +120,7 @@ export class SectionUpDelComponent implements OnInit {
 
     this.mgntService.updateSectionDetails(updateSection).subscribe({
       next(element){
-        alert(`${JSON.stringify(element)} : Updated successfully`);
+        alert(`Updated successfully`);
         that.goBackToProjects();
       },
       error(msg){

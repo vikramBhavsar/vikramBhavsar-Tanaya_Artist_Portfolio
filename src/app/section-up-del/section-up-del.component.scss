@@ -4,6 +4,23 @@ $secondary-color: #fec5bb;
 $secondary-blue: #2a9d8f;
 $secondary-red: #e63946;
 
+
+.goToMainPage{
+    letter-spacing: 2px;
+    padding: 1rem;
+    font-weight: normal;
+    font-size: 2rem;
+    background: $secondary-color;
+
+    a{
+    cursor: pointer;
+        background: transparent;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
+
 main{
 
     position: relative;

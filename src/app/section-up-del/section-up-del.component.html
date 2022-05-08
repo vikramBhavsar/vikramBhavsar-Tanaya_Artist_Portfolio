@@ -1,3 +1,6 @@
+<div class="goToMainPage">
+    <a (click)="goBackToProjects()">Go Back To Home</a>
+</div>
 
 <main>
 
@@ -25,20 +28,15 @@
     
                 <label for="sectionDescription">What is the Section about?</label>
                 <textarea type="text" id="sectionDescription" rows="6" formControlName="sectionDescription"></textarea>
-    
-                <label for="sectionDate">Section Date</label>
-                <small><em>If no date is provided then today's date is taken</em></small>
-                <input type="date" id="sectionDate" formControlName="sectionDate">
-                
+
                 <hr>
+
                 <label for="">Editable? <input type="checkbox" (click)="changeEditable()" [checked]="editable"> </label>
                 <div class="manage-btns">
-                    <button (click)="updateSection" [disabled]="!editable">Update Section</button>
+                    <button (click)="updateSection()" [disabled]="!editable">Update Section</button>
                     <button type="button" (click)="deleteSection()" class="deleteBtn">Delete Section</button>
                 </div>
-
             </form>
-    
         </div>
     </div>
 

@@ -11,8 +11,11 @@ export class AboutComponent implements OnInit {
 
   constructor(private aboutDataService : AboutDataService) { }
 
-  content!:About[];
-
+  aboutContents:About[] = [{
+    about_heading :'',
+    about_content :'',
+    mediaFile :'',
+  }]
   ngOnInit(): void {
 
     this.initializeData();
@@ -21,10 +24,20 @@ export class AboutComponent implements OnInit {
 
   // This will initial the page with about content
   initializeData(){
+
+    let that = this;
+    this.aboutDataService.getAboutData().subscribe({
+      next(res){
+        that.aboutContents = res;
+      },
+      error(msg){
+        alert(`ERROR OCURRED: ${msg.status} - ${msg.details}`);
+        console.log(msg)
+      }
+    });
+
     this.aboutDataService.getAboutData().subscribe(res =>{
-      console.log(res);
-      this.content = res;
-      console.log(this.content);
+
     })
   }
 

@@ -51,14 +51,14 @@
                 <small><em>Selecting Section is mandatory</em></small>
                 <select name="sectionID" id="sectionID" formControlName="sectionID">
                     <option value="" disabled selected hidden>Select Section</option>
-                    <option [value]="section.id" *ngFor="let section of projectDetails.sections">{{section.sectionName}}</option>
+                    <option [value]="section.id" *ngFor="let section of projectDetails?.sections">{{section.sectionName}}</option>
                   </select>
     
                 <label for="mediaDescription">Enter Media Description</label>
                 <input type="text" id="mediaDescription" formControlName="mediaDescription">
                 
                 <label for="mediaFile" class="filePicker" *ngIf="mediaCreateForm.controls['isVideo'].value != true">Select a file:
-                    <input type="file" id="mediaFile" name="mediaFile" (change)="fileUploadInitiated($event)" *ngIf="mediaCreateForm.controls['isVideo'].value != true">   
+                    <input type="file" id="mediaFile" name="mediaFile" (change)="fileUploadInitiated($event)" *ngIf="mediaCreateForm.controls['isVideo'].value != true" accept="image/jpg, image/jpeg">   
                 </label>
     
                 <label for="videoUrl" *ngIf="mediaCreateForm.controls['isVideo'].value == true">Video URL:</label>
@@ -102,7 +102,7 @@
     <div class="management-divide">
 
 
-        <div class="management-page"  *ngFor="let section of projectDetails.sections">
+        <div class="management-page"  *ngFor="let section of projectDetails?.sections">
 
             <div class="grid-divide">
                 <div class="section-page">

@@ -3,13 +3,14 @@ import { of } from 'rxjs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ProjectGLRY, ProjectModel, ServerData } from '../models/project-contents';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GalleryDataService {
 
-  dataLink:string = 'http://127.0.0.1:8000/api/';
+  dataLink:string = environment.baseServerURL;
 
 
   home_URLS_list!: string[];

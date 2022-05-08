@@ -17,16 +17,14 @@
   <!-- This div wil contain all the gallery section -->
   <div class="gallery-container">
     <h1>{{ projectGLRY.projectName }}</h1>
-    <p
-      [innerHTML]="
-      projectGLRY.projectDescription | markdown
-      "
-    ></p>
+    <p [innerHTML]="projectGLRY.projectDescription | markdown"></p>
+
+    <hr>
 
     <div *ngFor="let pSection of projectGLRY.sections">
       <!-- This section is for MULTIPLE IMAGES -->
       <div *ngIf="pSection.sectionDisplayType == 'MG'">
-        <div class="project-section-multiple-photos-layed">
+        <div class="project-section-multiple-photos-layed gallery-section">
           <!-- Section header will always be there -->
           <h2>{{ pSection.sectionName }}</h2>
 
@@ -41,41 +39,39 @@
             <!-- Showing the images in grid format -->
             <div *ngFor="let imageItem of pSection.mediaContent">
               <!-- Below code is distinct for IMAGES AND VIDEO TOGER -->
-              <div
-                *ngIf="
-                  imageItem.isVideo;
-                  then videoBlockMG;
-                  else imgBlockMG
-                "
-              ></div>
-              <ng-template #videoBlockMG>
-                <div class="video-section">
-                  <div class="iframe-container">  
-                    <iframe
-                      [src]="imageItem.videoUrl | safeUrl: 'resourceUrl'"
-                      frameborder="0"
-                      allowfullscreen
-                    ></iframe>
+              <div [ngSwitch]="imageItem.isVideo">
+                <div *ngSwitchCase="true">
+                  <div class="video-section">
+                    <div class="iframe-container">
+                      <iframe
+                        [src]="imageItem.videoUrl | safeUrl: 'resourceUrl'"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <small
+                      [innerHTML]="imageItem.mediaDescription | markdown"
+                    ></small>
                   </div>
-                  <small
-                    [innerHTML]="imageItem.mediaDescription | markdown"
-                  ></small>
                 </div>
-              </ng-template>
-              <ng-template #imgBlockMG>
-                <div class="image-section">
-                  <img
-                    src="{{ imageItem.mediaFile }}"
-                    (click)="
-                      openImage(imageItem.mediaFile, imageItem.mediaDescription)
-                    "
-                    alt=""
-                  />
-                  <small
-                    [innerHTML]="imageItem.mediaDescription | markdown"
-                  ></small>
+                <div *ngSwitchCase="false">
+                  <div class="image-section">
+                    <img
+                      src="{{ imageItem.mediaFile }}"
+                      (click)="
+                        openImage(
+                          imageItem.mediaFile,
+                          imageItem.mediaDescription
+                        )
+                      "
+                      alt=""
+                    />
+                    <small
+                      [innerHTML]="imageItem.mediaDescription | markdown"
+                    ></small>
+                  </div>
                 </div>
-              </ng-template>
+              </div>
             </div>
           </div>
         </div>
@@ -83,31 +79,109 @@
 
       <!-- THis section is for single photo with description -->
       <div *ngIf="pSection.sectionDisplayType == 'SD'">
-        <div class="project-section-single-photo">
+        <div class="project-section-single-photo gallery-section">
           <h2>{{ pSection.sectionName }}</h2>
 
           <div class="description-divide">
 
-            <div class="video-overlay" *ngIf="pSection.mediaContent[0].isVideo">
 
-              <div class="iframe-container">
-                <iframe
-                [src]="pSection.mediaContent[0].videoUrl | safeUrl: 'resourceUrl'"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
+            <div [ngSwitch]="pSection.mediaContent[0].isVideo">
+              <div class="video-overlay" *ngSwitchCase="true">
+                <div class="iframe-container">
+                  <iframe
+                    [src]="
+                      pSection.mediaContent[0].videoUrl | safeUrl: 'resourceUrl'
+                    "
+                    frameborder="0"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+  
+                <div class="video-description-short">
+                  <small
+                    [innerHTML]="
+                      pSection.mediaContent[0].mediaDescription | markdown
+                    "
+                    >{{
+                      pSection.mediaContent[0].mediaDescription | markdown
+                    }}</small
+                  >
+                </div>
               </div>
 
-            <div class="video-description-short">
-              <small
-                [innerHTML]="pSection.mediaContent[0].mediaDescription | markdown"
-                >{{ pSection.mediaContent[0].mediaDescription | markdown }}</small
-              >
-            </div>
-            </div>
+              <div class="img-overlay" *ngSwitchCase="false">
+                <!-- Showing the first image Since SD type section will only have one image -->
+                <img
+                  src="{{ pSection.mediaContent[0].mediaFile }}"
+                  (click)="
+                    openImage(
+                      pSection.mediaContent[0].mediaFile,
+                      pSection.mediaContent[0].mediaDescription
+                    )
+                  "
+                  alt=""
+                />
+                <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
+                <div class="img-description-short">
+                  <small
+                    [innerHTML]="
+                      pSection.mediaContent[0].mediaDescription | markdown
+                    "
+                    >{{
+                      pSection.mediaContent[0].mediaDescription | markdown
+                    }}</small
+                  >
+                </div>
+              </div>
 
 
-            <div class="img-overlay" *ngIf="!pSection.mediaContent[0].isVideo">
+            </div>
+
+            <div *ngIf="pSection.sectionDescription.length > 1">
+              <div class="img-description-long">
+                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THis section is for single photo WITHOUT description -->
+      <div *ngIf="pSection.sectionDisplayType == 'S'">
+        <div class="project-section-single-photo-without-description gallery-section">
+          <h2>{{ pSection.sectionName }}</h2>
+
+          <div [ngSwitch]="pSection.mediaContent[0].isVideo">
+
+            <div class="video-overlay" *ngSwitchCase="true">
+              <div class="iframe-container">
+                <iframe
+                  [src]="
+                    pSection.mediaContent[0].videoUrl | safeUrl: 'resourceUrl'
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div class="video-description-short">
+                <small
+                  [innerHTML]="
+                    pSection.mediaContent[0].mediaDescription | markdown
+                  "
+                  >{{
+                    pSection.mediaContent[0].mediaDescription | markdown
+                  }}</small
+                >
+              </div>
+
+
+
+
+
+            </div>
+
+            <div class="img-overlay" *ngSwitchCase="false">
               <!-- Showing the first image Since SD type section will only have one image -->
               <img
                 src="{{ pSection.mediaContent[0].mediaFile }}"
@@ -122,77 +196,69 @@
               <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
               <div class="img-description-short">
                 <small
-                  [innerHTML]="pSection.mediaContent[0].mediaDescription | markdown"
-                  >{{ pSection.mediaContent[0].mediaDescription | markdown }}</small
+                  [innerHTML]="
+                    pSection.mediaContent[0].mediaDescription | markdown
+                  "
+                  >{{
+                    pSection.mediaContent[0].mediaDescription | markdown
+                  }}</small
                 >
               </div>
             </div>
-
-            <div *ngIf="pSection.sectionDescription.length > 1">
-              <div class="img-description-long">
-                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
-              </div>
-            </div>
           </div>
+
         </div>
       </div>
 
-      <!-- THis section is for single photo WITHOUT description -->
-      <div *ngIf="pSection.sectionDisplayType == 'S'">
-        <div class="project-section-single-photo-without-description">
-          <h2>{{ pSection.sectionName }}</h2>
-
-          <div class="img-overlay">
-            <!-- Showing the first image Since SD type section will only have one image -->
-            <img
-              src="{{ pSection.mediaContent[0].mediaFile }}"
-              (click)="
-                openImage(
-                  pSection.mediaContent[0].mediaFile,
-                  pSection.mediaContent[0].mediaDescription
-                )
-              "
-              alt=""
-            />
-            <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum consequuntur saepe odit cupiditate, eveniet dicta quos ab facilis aliquid numquam?</p> -->
-            <div class="img-description-short">
-              <small
-                [innerHTML]="pSection.mediaContent[0].mediaDescription | markdown"
-                >{{ pSection.mediaContent[0].mediaDescription | markdown }}</small
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- This section is for three images (with and without description) -->
-      <div *ngIf="pSection.sectionDisplayType== '3W'">
-        <div class="project-section-three-photos-layed">
+      <!-- This section is for three images (with description) -->
+      <div *ngIf="pSection.sectionDisplayType == '3W'">
+        <div class="project-section-three-photos-layed gallery-section">
           <!-- Section header will always be there -->
           <h2>{{ pSection.sectionName }}</h2>
 
-          <div class="section-contents">
-            <!-- Section Description may or may not be there -->
-            <div *ngIf="pSection.sectionDescription.length > 1">
-              <div class="description-section">
-                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
-              </div>
+          <!-- Section Description may or may not be there -->
+          <div *ngIf="pSection.sectionDescription.length > 1">
+            <div class="description-section">
+              <p [innerHTML]="pSection.sectionDescription | markdown"></p>
             </div>
+          </div>
 
-            <div class="image-content">
-              <!-- Showing the images in grid format -->
-              <div *ngFor="let imageItem of pSection.mediaContent">
-                <div class="image-section">
-                  <img
-                    src="{{ imageItem.mediaFile }}"
-                    (click)="
-                      openImage(imageItem.mediaFile, imageItem.mediaDescription)
-                    "
-                    alt=""
-                  />
-                  <small
-                    [innerHTML]="imageItem.mediaDescription | markdown"
-                  ></small>
+          <div class="section-contents">
+
+            <!-- Showing the images in grid format -->
+            <div *ngFor="let imageItem of pSection.mediaContent">
+              <!-- Below code is distinct for IMAGES AND VIDEO TOGER -->
+              <div [ngSwitch]="imageItem.isVideo">
+                <div *ngSwitchCase="true">
+                  <div class="video-section">
+                    <div class="iframe-container">
+                      <iframe
+                        [src]="imageItem.videoUrl | safeUrl: 'resourceUrl'"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <small
+                      [innerHTML]="imageItem.mediaDescription | markdown"
+                    ></small>
+                  </div>
+                </div>
+                <div *ngSwitchCase="false">
+                  <div class="image-section">
+                    <img
+                      src="{{ imageItem.mediaFile }}"
+                      (click)="
+                        openImage(
+                          imageItem.mediaFile,
+                          imageItem.mediaDescription
+                        )
+                      "
+                      alt=""
+                    />
+                    <small
+                      [innerHTML]="imageItem.mediaDescription | markdown"
+                    ></small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -202,32 +268,53 @@
 
       <!-- This section is for two images (without description) -->
       <div *ngIf="pSection.sectionDisplayType == '2W'">
-        <div class="project-section-two-photos-layed-without-description">
+        <div class="project-section-two-photos-layed-without-description gallery-section">
           <!-- Section header will always be there -->
           <h2>{{ pSection.sectionName }}</h2>
 
-          <div class="section-contents">
-            <!-- Section Description may or may not be there -->
-            <div *ngIf="pSection.sectionDescription.length > 1">
-              <div class="description-section">
-                <p [innerHTML]="pSection.sectionDescription | markdown"></p>
-              </div>
+          <!-- Section Description may or may not be there -->
+          <div *ngIf="pSection.sectionDescription.length > 1">
+            <div class="description-section">
+              <p [innerHTML]="pSection.sectionDescription | markdown"></p>
             </div>
+          </div>
 
-            <div class="image-content">
-              <!-- Showing the images in grid format -->
-              <div *ngFor="let imageItem of pSection.mediaContent">
-                <div class="image-section">
-                  <img
-                    src="{{ imageItem.mediaFile }}"
-                    (click)="
-                      openImage(imageItem.mediaFile, imageItem.mediaDescription)
-                    "
-                    alt=""
-                  />
-                  <small
-                    [innerHTML]="imageItem.mediaDescription | markdown"
-                  ></small>
+          <div class="section-contents">
+
+            <!-- Showing the images in grid format -->
+            <div *ngFor="let imageItem of pSection.mediaContent">
+              <!-- Below code is distinct for IMAGES AND VIDEO TOGER -->
+              <div [ngSwitch]="imageItem.isVideo">
+                <div *ngSwitchCase="true">
+                  <div class="video-section">
+                    <div class="iframe-container">
+                      <iframe
+                        [src]="imageItem.videoUrl | safeUrl: 'resourceUrl'"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <small
+                      [innerHTML]="imageItem.mediaDescription | markdown"
+                    ></small>
+                  </div>
+                </div>
+                <div *ngSwitchCase="false">
+                  <div class="image-section">
+                    <img
+                      src="{{ imageItem.mediaFile }}"
+                      (click)="
+                        openImage(
+                          imageItem.mediaFile,
+                          imageItem.mediaDescription
+                        )
+                      "
+                      alt=""
+                    />
+                    <small
+                      [innerHTML]="imageItem.mediaDescription | markdown"
+                    ></small>
+                  </div>
                 </div>
               </div>
             </div>

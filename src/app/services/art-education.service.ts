@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ArtProjectMain, ArtProjects } from '../models/art-education';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtEducationService {
 
-  dataLink:string = 'http://127.0.0.1:8000/api/';
+  dataLink:string = environment.baseServerURL;
 
-  constructor(private httpClient:HttpClient ) { }
+  constructor(private httpClient:HttpClient) { }
 
 
   getArtEducationProject():Observable<ArtProjects[]>{

@@ -9,8 +9,6 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { PrjRantsComponent } from './prj-rants/prj-rants.component';
-import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 import { MainAppComponent } from './main-app/main-app.component';
 import { MarkdownPipe } from './pipes/markdown.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
@@ -21,6 +19,8 @@ import { DatePipe } from '@angular/common';
 import { SectionMngmComponent } from './section-mngm/section-mngm.component';
 import { SectionUpDelComponent } from './section-up-del/section-up-del.component';
 import { ArtEducationComponent } from './art-education/art-education.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogMngmComponent } from './blog-mngm/blog-mngm.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,6 @@ import { ArtEducationComponent } from './art-education/art-education.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    PrjRantsComponent,
-    TextFormatterComponent,
     MainAppComponent,
     MarkdownPipe,
     SafeUrlPipe,
@@ -38,7 +36,9 @@ import { ArtEducationComponent } from './art-education/art-education.component';
     ProjectMngmComponent,
     SectionMngmComponent,
     SectionUpDelComponent,
-    ArtEducationComponent,  
+    ArtEducationComponent,
+    BlogsComponent,
+    BlogMngmComponent,  
     
   ],
   imports: [

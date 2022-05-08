@@ -40,18 +40,23 @@ main{
         display: grid;
         grid-template-columns: 1fr 1fr;
 
-        .project-list{
+        .project-list , .blog-list{
 
              background-color: $secondary-color;
 
             width: 80%;
             margin: 2rem;
             ul{
-                display: flex;
+                // display: flex;
+                // flex-direction: row;
+                // justify-content: space-around;
+                // flex-wrap: wrap;
+                
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+
+                padding: 2rem;
                 height: 100%;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-around;
                 align-items: center;
                 background-color: transparent;
                 text-decoration: none;
@@ -61,6 +66,7 @@ main{
                     text-decoration: none;
                     background: transparent;
                     a{
+                        cursor: pointer;
                         text-decoration: none;
                         color: $primary-dark;
                         background: transparent;
@@ -127,6 +133,47 @@ main{
                 }
             }
             margin: 1rem;
+        }
+
+        .create-blog{
+            width: 80%;
+            max-width: 30rem;
+
+            margin: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+
+            label{
+                font-size: 1.5rem;
+                text-transform: uppercase;
+            }
+
+            input{
+                &:focus{
+                    outline: none;
+                }
+
+                border: 1px rgba($color: $primary-dark, $alpha: 0.8) solid;
+                border-radius: 5px;
+                padding: 1rem;
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+
+            button{
+                padding: 1rem;
+                background-color: $primary-dark;
+                color: $primary-color;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                border: none;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.9;
+                }
+            }
         }
     }
 }

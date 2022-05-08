@@ -11,26 +11,22 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-  error_message:string = '';
+  error_message: string = '';
   jwt_res!: JwtResponse;
 
-
   loginForm = new FormGroup({
-    loginUsername: new FormControl('',Validators.required),
-    loginPassword: new FormControl('',Validators.required),
+    loginUsername: new FormControl('', Validators.required),
+    loginPassword: new FormControl('', Validators.required),
   });
 
-  constructor(private authService: AuthenticateService,
-              private router: Router) {}
+  constructor(
+    private authService: AuthenticateService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    //this.performLogin("admin","password");
-    this.getTestData();
-  }
+  ngOnInit(): void {}
 
-
-  onSubmit(){
+  onSubmit() {
     let username = this.loginForm.controls['loginUsername'].value;
     let password = this.loginForm.controls['loginPassword'].value;
 
@@ -50,22 +46,13 @@ export class LoginComponent implements OnInit {
       error(msg) {
         console.log(`Error received:`);
         console.log(msg);
-        let errorMsg:HttpErrorResponse = msg;
+        alert("Login Unsuccessful.")
+        let errorMsg: HttpErrorResponse = msg;
         that.error_message = errorMsg.error.detail + ` (${errorMsg.status})`;
       },
     });
   }
 
-  getTestData() {
-    this.authService.testByGettingProtectedData().subscribe((response) => {
-      console.log(response);
-    });
-  }
-
-
-    // ** Function to perform login for the user
-    performLogin(username: string, password: string) {
-
-    }
-  
+  // ** Function to perform login for the user
+  performLogin(username: string, password: string) {}
 }

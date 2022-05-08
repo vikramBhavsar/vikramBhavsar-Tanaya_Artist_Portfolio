@@ -6,6 +6,8 @@ import { GalleryComponent } from '../gallery/gallery.component';
 import { GalleryProjectIDService } from '../services/gallery-project-id.service';
 import { ArtEducationService } from '../services/art-education.service';
 import { ArtProjects } from '../models/art-education';
+import { Blog } from '../models/blog';
+import { BlogService } from '../services/blog.service';
 
 @Component({
   selector: 'app-main-app',
@@ -25,6 +27,15 @@ export class MainAppComponent implements OnInit {
   // **** Variables for Art Project Selection
   curArtproject:string = '';
 
+
+  // **** Variables for Project/Rants Project Selection
+  curBlog:string = '';
+
+  // **** Variables for Blog Management
+  curBlogMgmn:string =  '';
+
+
+
   projectList: ProjectModel[] = [{
     "id": "1",
     "projectName": "Fragments",
@@ -38,9 +49,18 @@ export class MainAppComponent implements OnInit {
     "projectDescription": "",
   }]
 
+
+  blogs:Blog[]=[{
+    "id": "1",
+    "blogName": "NGMA",
+    "isPublished": false,
+  }]
+
   // Used to identify which child component is active right now
   galleryActive:boolean = false;
   artEducationActive:boolean = false;
+  isBlogActive = false;
+  isBlogMgmnActive = false;
 
   // ********************* DECLARING ALL THE VIEWCHILD BELOW *********************
   // **** VIEW CHILD FOR ACCESSING HAMBURGER MENU.
@@ -50,6 +70,7 @@ export class MainAppComponent implements OnInit {
               private router : Router,
               private route : ActivatedRoute,
               private ProjectIDService:GalleryProjectIDService,
+              private blogService:BlogService,
               private artEducation:ArtEducationService) {}
 
   ngOnInit(): void {
@@ -62,6 +83,9 @@ export class MainAppComponent implements OnInit {
 
     // Initialize project drop down for art education
     this.initializeArtEducationData();
+
+    // Initialize blog data   
+    this.initializerBlogsData();
 
     // Initializing access token value
     this.access = localStorage.getItem("access") || '';
@@ -79,11 +103,14 @@ export class MainAppComponent implements OnInit {
       this.galleryActive = true;
     }
 
-
-
     // checking for Art Education Page.
     if(initialPageLoadLink.includes("/T/art-education/")){
       this.artEducationActive = true;
+    }
+
+    // checking for Blos - Project/rants page
+    if(initialPageLoadLink.includes("/T/project-rants/")){
+      this.isBlogActive = true;
     }
 
 
@@ -103,6 +130,22 @@ export class MainAppComponent implements OnInit {
         }else{
           this.artEducationActive = false;
         }
+
+
+        // *** checking if BLOGS is started or not
+        if(val.urlAfterRedirects.startsWith("/T/project-rants/")){
+          this.isBlogActive = true;
+        }else{
+          this.isBlogActive = false;
+        }
+
+
+        // *** checking if BLOGS management is started or not
+        if(val.urlAfterRedirects.startsWith("/T/blog-mngm/")){
+          this.isBlogMgmnActive = true;
+        }else{
+          this.isBlogMgmnActive = false;
+        }
       }
     })
   }
@@ -111,27 +154,66 @@ export class MainAppComponent implements OnInit {
   // *** Function to initialize art projects list
   initializeArtEducationData(){
 
-    let that = this;
-    this.artEducation.getArtEducationProject().subscribe({
-      next(res){
-        that.artProjectList = res;
-        that.ProjectIDService.updateArtMessage(that.artProjectList[0].id);
-      },
-      error(msg){
-        alert(`Error getting Projects: ${msg.status} : ${msg.details}`);
-      }
-    })
+    try {
+      let that = this;
+      this.artEducation.getArtEducationProject().subscribe({
+        next(res){
+          that.artProjectList = res;
+          that.ProjectIDService.updateArtMessage(that.artProjectList[0].id);
+        },
+        error(msg){
+          alert(`Error getting Projects: ${msg.status} : ${msg.details}`);
+        }
+      })
+      
+    } catch (error) {
+      
+    }
+
+
   }
 
   // **** FUNCTION for initializing project list
   initializerProjectData(){
-    this.galleryService.getProjectList().subscribe(res =>{
-      this.projectList = res;
 
-      // set the data for first project
-      this.ProjectIDService.updateMessage(this.projectList[0].id);
-    });
+    try {
+      this.galleryService.getProjectList().subscribe(res =>{
+        this.projectList = res;
+  
+        // set the data for first project
+        this.ProjectIDService.updateMessage(this.projectList[0].id);
+      });
+      
+    } catch (error) {
+      
+    }
   }
+
+
+  // **** FUNCTION for initializing Blogs list
+  initializerBlogsData(){
+
+    try {
+      let that = this;
+      this.blogService.getBlogsList().subscribe({
+        next(res){
+          that.blogs = res;
+          that.ProjectIDService.updateBlogMessage(that.blogs[0].id);
+  
+          // updating blog management default value as well
+          that.ProjectIDService.updateBlogMgmnMessage(that.blogs[0].id);
+        },
+        error(msg){
+          alert(`Error getting Projects: ${msg.status} : ${msg.details}`);
+        }
+      })
+      
+    } catch (error) {
+      
+    }
+
+  }
+
 
   // **** FUNCTION FOR TOGGLING HAMBURGER MENU ON PHONES
   TogglePhoneMenu() {
@@ -154,12 +236,32 @@ export class MainAppComponent implements OnInit {
     }
   }
 
-
-
   switchArtProject(selectedProjID:string, fromPhone:boolean = false){
     // ************** INFORM THE CHILD OF THE CUR PROJECT SELECTED.
     this.curArtproject = selectedProjID
     this.ProjectIDService.updateArtMessage(this.curArtproject);
+
+    // Closing the menu directly when selecting project from Side bar
+    if (fromPhone) {
+      this.TogglePhoneMenu();
+    }
+  }
+
+  switchBlogProject(selectedProjID:string, fromPhone:boolean = false){
+    // ************** INFORM THE CHILD OF THE CUR blog SELECTED.
+    this.curBlog = selectedProjID
+    this.ProjectIDService.updateBlogMessage(this.curBlog);
+
+    // Closing the menu directly when selecting project from Side bar
+    if (fromPhone) {
+      this.TogglePhoneMenu();
+    }
+  }
+
+  switchBlogMgnmProject(selectedProjID:string, fromPhone:boolean = false){
+    // ************** INFORM THE CHILD OF THE CUR blog SELECTED.
+    this.curBlogMgmn = selectedProjID
+    this.ProjectIDService.updateBlogMgmnMessage(this.curBlogMgmn);
 
     // Closing the menu directly when selecting project from Side bar
     if (fromPhone) {
@@ -180,5 +282,9 @@ export class MainAppComponent implements OnInit {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     this.router.navigate(['']);
+  }
+
+  goToLogin(){
+    this.router.navigate(['login']);
   }
 }

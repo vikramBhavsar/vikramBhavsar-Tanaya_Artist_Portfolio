@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',

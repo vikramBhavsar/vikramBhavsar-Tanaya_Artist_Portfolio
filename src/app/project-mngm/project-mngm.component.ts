@@ -4,6 +4,8 @@ import { ProjectModel } from '../models/project-contents';
 import { ManagementService } from '../services/management.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { Blog } from '../models/blog';
+import { BlogService } from '../services/blog.service';
 
 @Component({
   selector: 'app-project-mngm',
@@ -19,16 +21,50 @@ export class ProjectMngmComponent implements OnInit {
   //  Project model list for angukar
   projectModelList!: ProjectModel[];
 
+  //Blogs model list
+  blogList!:Blog[];
+
+  blogName= new FormControl('');
+
   constructor(
     private mgntService: ManagementService,
-    private router:Router
+    private router:Router,
+    private blogService: BlogService
   ) {}
 
   ngOnInit(): void {
 
     // Populating Projects section
     this.getProjectList();
+
+
+    // Populating blogs section
+    this.getBlogList();
   }
+
+
+  getBlogList() {
+    let that = this;
+    this.blogService.getBlogsList().subscribe({
+      next(response) {
+        that.blogList = response;
+      },
+      error(msg) {
+        alert('Error: Error when getting data');
+        // Assinging dymmy data for display
+        that.blogList = [
+          {
+            id: '',
+            blogName:'',
+            isPublished:false
+          },
+        ];
+
+        //  End of dummy assign
+      },
+    });
+  }
+
 
   getProjectList() {
     let that = this;
@@ -51,6 +87,37 @@ export class ProjectMngmComponent implements OnInit {
     });
   }
 
+
+  createBlog(){
+
+    if(this.blogName.value.length > 2){
+      let newBlog:Blog = {
+        id:'',
+        blogName: this.blogName.value,
+        isPublished:false,
+      }
+  
+      // Creating the blog here:
+      let that = this;
+      this.blogService.createNewBlog(newBlog).subscribe({
+        next(msg){
+          let tempBlog:Blog = msg;
+          
+          // get the details of the blog again
+          that.getBlogList();
+          alert("Blog Created successfully.");
+  
+        },
+        error(msg){
+          alert(`Error Creating Blog: ${msg.status} - ${msg.details}`)        
+        }
+      });
+    }else{
+      alert("Blog Name very short");
+    }
+
+  }
+
   createProject() {
 
     let projectInstance: ProjectModel = {
@@ -66,6 +133,7 @@ export class ProjectMngmComponent implements OnInit {
       next(response) {
         console.log(response);
         that.getProjectList();
+        alert("Project Created successfully.");
       },
       error(msg) {
         alert(`Error Occured: ${msg.status} : ${msg.details}`);
@@ -81,5 +149,10 @@ export class ProjectMngmComponent implements OnInit {
   // ** go to project
   goToProjectManagment(pid:string){
     this.router.navigate(['/sectiom-mngm',pid]);
+  }
+
+
+  goToBlogMgmn(blog_id:string){
+    this.router.navigate(['/T/blog-mngm',blog_id]);
   }
 }

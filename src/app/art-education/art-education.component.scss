@@ -8,6 +8,7 @@ $secondary-color: #fec5bb;
   color: $primary-dark;
   height: 100vh;
   position: relative;
+  text-align: justify;
 
   // Special CSS for opening a full screen image
   .opened-img {
@@ -116,10 +117,10 @@ $secondary-color: #fec5bb;
     cursor: pointer;
   }
 
-  .art-container{
+  .art-container {
     height: 100%;
     overflow-y: none;
-    margin: 0px 5px;
+    margin: 0px 1rem;
 
     // ** this is main project heading
     h1 {
@@ -128,10 +129,15 @@ $secondary-color: #fec5bb;
       letter-spacing: 0.5rem;
     }
 
+    p {
+      font-size: 1.5rem;
+    }
+
     // Project section for multiple images
     .project-section-multiple-photos-layed {
       display: grid;
       grid-template-columns: 1fr;
+      padding: 2rem;
 
       h2 {
         padding: 1rem;
@@ -145,7 +151,6 @@ $secondary-color: #fec5bb;
         grid-template-columns: 1fr 1fr 1fr;
         box-sizing: border-box;
         gap: 5px;
-
 
         .image-section {
           display: grid;
@@ -190,8 +195,6 @@ $secondary-color: #fec5bb;
         }
       }
     }
-
-
   }
 }
 
@@ -199,6 +202,16 @@ $secondary-color: #fec5bb;
 // For Tablets
 // @media only screen and (min-width: 980px) and (max-width: 1023px) { -- original tablet
 @media only screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    .art-container {
+      // Project section for multiple images
+      .project-section-multiple-photos-layed {
+        .section-contents {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    }
+  }
 }
 
 // // For mobile Landscape
@@ -207,4 +220,15 @@ $secondary-color: #fec5bb;
 
 // for typical mobile devices
 @media only screen and (max-width: 767px) {
+
+  .container {
+    .art-container {
+      // Project section for multiple images
+      .project-section-multiple-photos-layed {
+        .section-contents {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
 }

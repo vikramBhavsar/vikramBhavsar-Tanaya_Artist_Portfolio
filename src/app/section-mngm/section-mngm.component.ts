@@ -41,7 +41,7 @@ export class SectionMngmComponent implements OnInit {
   // serverLink:string = 'http://127.0.0.1:8000'
 
   // ** To store list of sections
-  projectDetails!: ProjectGLRY;
+  projectDetails?: ProjectGLRY;
 
   constructor(
     private route: ActivatedRoute,
@@ -141,7 +141,14 @@ export class SectionMngmComponent implements OnInit {
     if(this.imgFile){
       formData.append('mediaFile', this.imgFile);
     }else{
-      formData.append("videoUrl",this.mediaCreateForm.controls['videoUrl'].value);
+
+      if(this.mediaCreateForm.controls['videoUrl'].value.length < 1){
+        formData.append("videoUrl","empty");
+
+      }else{
+
+        formData.append("videoUrl",this.mediaCreateForm.controls['videoUrl'].value);
+      }
       formData.append(
         'isVideo',
         'true'
@@ -173,7 +180,7 @@ export class SectionMngmComponent implements OnInit {
         console.log(element);
         alert('Media Uploaded');
         that.getProjectDetails();
-        that.imgFile = undefined;
+        that.imgFile = new File([],'');
       },
       error(msg) {
         console.log(msg);

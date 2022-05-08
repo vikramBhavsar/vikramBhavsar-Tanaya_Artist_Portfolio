@@ -1,4 +1,5 @@
 export interface About {
-    heading:string;
-    content:string;
+    about_heading?:string;
+    about_content:string;
+    mediaFile?:string;
 }

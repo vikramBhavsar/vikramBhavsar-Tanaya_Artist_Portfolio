@@ -62,27 +62,21 @@ export class GalleryComponent implements OnInit {
   ngAfterViewInit(): void {
   }
 
-  // initializeRouterForProjectChange() {
-
-  //   this.router.events.subscribe((val) => {
-  //     if (val instanceof NavigationEnd) {
-  //       let routeParams = this.route.snapshot.paramMap;
-  //       let projectIDFromRoute = routeParams.get('projectid');
-  //       alert("This is from inside of gallery component;");
-  //       alert(`Current Project ID: ${this.curProject}`);
-  //       this.curProject = projectIDFromRoute || '';
-  //     }
-  //   });
-  // }
-
   initializerGalleryData() {
     
-    this.galleryService.getGalleryData(this.curProject.toString()).subscribe((res) => {
-      this.projectGLRY = this.processResultsForLayout(res);
-      console.log(res);
-      console.log("Below is Server Data received: ");
-      console.log(this.projectGLRY);
-    });
+    let that = this;
+
+    this.galleryService.getGalleryData(this.curProject.toString()).subscribe({
+      next(res){
+        that.projectGLRY = that.processResultsForLayout(res);
+        console.log(res);
+        console.log("Below is Server Data received: ");
+        console.log(that.projectGLRY);
+      },
+      error(msg){
+        console.log(msg);
+      }
+    })
   }
 
 
@@ -95,19 +89,19 @@ export class GalleryComponent implements OnInit {
     // (MG) -- multiple gallery contents
     // (SD) -- Single image with description
     // (S) -- Single Image with no description (currently looks okay)
-    // (MC) -- Multiple image with Carousal
-    // (MC) -- multiple image with carousal description
     // (3W) -- Three images without description
     // (2W) -- Two images without description
     ///
 
     for(var i = 0; i < resultsData.sections.length; i++){
-      if(resultsData.sections[i].mediaContent.length > 2){
-        resultsData.sections[i].sectionDisplayType = 'MG';
-      }else if(resultsData.sections[i].mediaContent.length  == 1 && resultsData.sections[i].sectionDescription.length == 0){
+      if(resultsData.sections[i].mediaContent.length  == 1 && resultsData.sections[i].sectionDescription.length == 0){
         resultsData.sections[i].sectionDisplayType = 'S';
       }else if(resultsData.sections[i].mediaContent.length  == 1 && resultsData.sections[i].sectionDescription.length > 1){
         resultsData.sections[i].sectionDisplayType = 'SD';
+      }else if(resultsData.sections[i].mediaContent.length == 3){
+        resultsData.sections[i].sectionDisplayType = '3W';
+      }else if(resultsData.sections[i].mediaContent.length  == 2 && resultsData.sections[i].sectionDescription.length == 0){
+        resultsData.sections[i].sectionDisplayType = '2W';
       }else{
         resultsData.sections[i].sectionDisplayType = 'MG';
       }

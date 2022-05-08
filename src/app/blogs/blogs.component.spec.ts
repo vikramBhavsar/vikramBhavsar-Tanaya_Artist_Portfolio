@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextFormatterComponent } from './text-formatter.component';
+import { BlogsComponent } from './blogs.component';
 
-describe('TextFormatterComponent', () => {
-  let component: TextFormatterComponent;
-  let fixture: ComponentFixture<TextFormatterComponent>;
+describe('BlogsComponent', () => {
+  let component: BlogsComponent;
+  let fixture: ComponentFixture<BlogsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextFormatterComponent ]
+      declarations: [ BlogsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextFormatterComponent);
+    fixture = TestBed.createComponent(BlogsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

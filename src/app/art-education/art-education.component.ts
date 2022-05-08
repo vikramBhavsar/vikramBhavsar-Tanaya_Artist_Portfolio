@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ArtProjectMain } from '../models/art-education';
 import { ArtEducationService } from '../services/art-education.service';
-import { GalleryDataService } from '../services/gallery-data.service';
 import { GalleryProjectIDService } from '../services/gallery-project-id.service';
 
 @Component({
@@ -51,14 +50,12 @@ export class ArtEducationComponent implements OnInit {
   initializerArtData(){
 
     let that = this;
-    alert("Executing with value");
-    alert(this.curArtProject);
     this.artEducationService.getArtEducationProjectDetails(this.curArtProject).subscribe({
       next(res){
         that.artProject = res;
       },
       error(msg){
-        alert(`Error occurred: ${msg.status} : ${msg.details}`)
+        // alert(`Error occurred: ${msg.status} : ${msg.details}`)
         console.log(msg);
       }
     });
